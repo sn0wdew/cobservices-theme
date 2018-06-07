@@ -1,0 +1,107 @@
+/* ============ Top Navigation Styles ============ */
+.top-nav{
+  background-color:white;
+  overflow: auto;
+  color: #606060;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+nav ul li {
+  display: inline-block;
+  position: relative;
+}
+.top-nav ul li + li{
+  margin-left: 10px;
+}
+.left-nav{
+  float: left;
+}
+
+.right-nav{
+  float: right;
+  display: inline-block;
+}
+
+/* ============ Main Navigation Styles ============ */
+.main-nav {
+  min-height: 6.3rem;
+  overflow: visible;
+  background-color: #00694E;
+  color: white;
+  position: relative;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav #menu a::after {
+    content: "";
+    height: 2px;
+    width: 0px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 41px;
+    transition: width .2s;
+}
+
+.main-nav #menu a:hover::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 41px;
+    transition: width .2s;
+}
+
+.main-nav nav {
+  float: right;
+  height: 63px;
+  line-height: 63px;
+  line-height: 6.3rem;
+}
+
+.main-nav img {
+  height: 63px;
+  height: 6.3rem;
+}
+#menu li + li{
+  margin-left: 42px;
+}
+
+.slicknav_menu{
+  position: absolute;
+  top: 0;
+  right: 0;
+
+}
+
+@media screen and (max-width: 991px){
+  #menu{
+    display: none;
+  }
+  .slicknav_menu{
+    display:block;
+  }
+}
+@media screen and (min-width: 992px){
+  .slicknav_menu{
+    display:none;
+  }
+}
+
+@media screen and (max-width: 576px){
+  .main-nav img {
+      margin-top: 7px;
+      height: 48px;
+      height: 4.8rem;
+    }
+}
