@@ -1,25 +1,22 @@
-ul, ol {
-	margin: 0 0 1.5em 3em;
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-ul {
-	list-style: disc;
-}
-
-ol {
-	list-style: decimal;
-}
-
-li > ul,
-li > ol {
-	margin-bottom: 0;
-	margin-left: 1.5em;
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
 }
 
 dt {
-	font-weight: bold;
+  font-weight: 700;
 }
 
 dd {
-	margin: 0 1.5em 1.5em;
+  margin-bottom: .5rem;
+  margin-left: 0;
 }
