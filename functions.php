@@ -44,7 +44,16 @@ if ( ! function_exists( 'cob_services_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'cob-services' ),
+			'main-navigation' => esc_html__( 'Main Navigation Menu', 'cob-services' ),
+		) );
+
+		register_nav_menus( array(
+			'top-left' => esc_html__( 'Top Left Header Menu', 'cob-services' ),
+
+		) );
+
+		register_nav_menus( array(
+			'top-right' => esc_html__( 'Top Right Header Menu', 'cob-services' ),
 		) );
 
 		/*
@@ -138,10 +147,15 @@ function cob_services_scripts() {
   // End Custom Stylesheets
 
 	wp_enqueue_style( 'cob-services-style', get_stylesheet_uri() );
+
   // Start Custom Javascript
   wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'popper' );
-  wp_enqueue_script( 'cob-services-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(jquery, popper), '20151215', true );
+  wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(jquery, popper), null, true);
+  wp_enqueue_script( 'fontawesome', get_template_directory_uri() . '/js/fontawesome-all.js', array(), null, false);
+  wp_enqueue_script( 'slicknav', get_template_directory_uri() . '/js/jquery.slicknav.js', array(jquery), null, true);
+  wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(jquery), null, true);
+  // End Custom Javascript
 
 	wp_enqueue_script( 'cob-services-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -186,3 +200,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+// Custom Functions Below
+
+
+// This function allows the upload of SVG Files
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+// Custom Walker Class to use fa icons

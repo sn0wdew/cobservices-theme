@@ -24,35 +24,46 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'cob-services' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<!-- Start Custom Header -->
+  <header>
+		<div class="container top-nav">
+	    <nav class="left-nav">
 				<?php
-			else :
+				wp_nav_menu( array(
+					'theme_location' => 'top-left',
+					'items_wrap' => '<ul><i class="fas fa-shopping-cart fa-fw"></i><li>%3$s</li></ul>',
+				) );
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<!--
+	      <ul>
+	        <li><i class="fas fa-user fa-fw"></i> Login</li>
+	      </ul>
+			-->
+	    </nav>
+	    <nav class="right-nav">
+	      <ul>
+	        <li><i class="fas fa-shopping-cart fa-fw"></i> Cart</li>
+	        <li><i class="fas fa-search fa-fw"></i> Search</li>
+	      </ul>
+	    </nav>
+	  </div>
+	  <div class="main-nav">
+	    <div class="container">
 				<?php
-			endif;
-			$cob_services_description = get_bloginfo( 'description', 'display' );
-			if ( $cob_services_description || is_customize_preview() ) :
+				the_custom_logo();
 				?>
-				<p class="site-description"><?php echo $cob_services_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	      <nav>
+					<?php
+					wp_nav_menu( array(
+						'theme_location' => 'main-navigation',
+						'menu_id'        => 'menu',
+					) );
+					?>
+	      </nav>
+	    </div>
+	  </div>
+	</header>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'cob-services' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+  <!-- End Custom Header -->
 
 	<div id="content" class="site-content">

@@ -35,8 +35,8 @@ nav ul li {
   position: relative;
 }
 
-.main-nav a {
-    color: white;
+.main-nav a, .main-nav a:hover, .main-nav a:visited  {
+    color: white !important;
     text-decoration: none;
 }
 
@@ -51,7 +51,7 @@ nav ul li {
     transition: width .2s;
 }
 
-.main-nav #menu a:hover::after {
+.main-nav #menu a:hover::after, #menu .current-menu-item::after {
     content: "";
     height: 2px;
     width: 100%;

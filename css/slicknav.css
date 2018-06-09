@@ -57,7 +57,7 @@
   .slicknav_nav ul {
     display: block; }
   .slicknav_nav li {
-    display: block; 
+    display: block;
     max-width: 30rem;
     margin-left: auto;
     margin-right: auto;
@@ -96,16 +96,16 @@
   float: left; }
 
 .slicknav_menu {
-/* Start new Style */    
+/* Start new Style */
   float: right;
   position: static;
-/* End new Style */ 
+/* End new Style */
   font-size: 16px;
   box-sizing: border-box;
 /*  background: #4c4c4c;
-  padding: 5px; 
+  padding: 5px;
 */
-  
+
   text-align: center;}
 
   .slicknav_menu * {
@@ -130,7 +130,7 @@
   font-size: 0.875em;
   list-style: none;
   overflow: hidden;
-  /* My new Style */ 
+  /* My new Style */
   position: absolute;
   top: 100%;
   background-color: #024230;

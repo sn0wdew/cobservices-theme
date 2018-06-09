@@ -356,7 +356,7 @@ input,
 select,
 optgroup,
 textarea {
-  color: #404040;
+  color: black;
   font-family: "Roboto", sans-serif;
   font-size: 0.8125px;
   font-size: 1.3rem;
@@ -685,14 +685,14 @@ progress {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue;
+  color: #05B4C6;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:visited {
-    color: purple; }
+    color: #05B4C6; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: #37e8fa; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
