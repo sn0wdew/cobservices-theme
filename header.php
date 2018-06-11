@@ -31,20 +31,26 @@
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'top-left',
-					'items_wrap' => '<ul><i class="fas fa-shopping-cart fa-fw"></i><li>%3$s</li></ul>',
+					'items_wrap' => '<ul>%3$s</ul>',
+					'container' => false,
+					'walker' => new Walker_Nav_Icons()
+				) );
+				?>
+	    </nav>
+	    <nav class="right-nav">
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'top-right',
+					'items_wrap' => '<ul>%3$s</ul>',
+					'container' => false,
+					'walker' => new Walker_Nav_Icons()
 				) );
 				?>
 				<!--
 	      <ul>
-	        <li><i class="fas fa-user fa-fw"></i> Login</li>
-	      </ul>
-			-->
-	    </nav>
-	    <nav class="right-nav">
-	      <ul>
 	        <li><i class="fas fa-shopping-cart fa-fw"></i> Cart</li>
 	        <li><i class="fas fa-search fa-fw"></i> Search</li>
-	      </ul>
+	      </ul> -->
 	    </nav>
 	  </div>
 	  <div class="main-nav">

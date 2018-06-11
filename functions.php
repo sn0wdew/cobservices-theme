@@ -49,7 +49,7 @@ if ( ! function_exists( 'cob_services_setup' ) ) :
 
 		register_nav_menus( array(
 			'top-left' => esc_html__( 'Top Left Header Menu', 'cob-services' ),
-
+			//'walker' => new Walker_Nav_Icons()
 		) );
 
 		register_nav_menus( array(
@@ -211,4 +211,5 @@ function cc_mime_types($mimes) {
 }
 add_filter('upload_mimes', 'cc_mime_types');
 
-// Custom Walker Class to use fa icons
+// Get Custom Walker Class
+require get_template_directory() . '/inc/walker.php';
