@@ -42,16 +42,17 @@ if ( ! function_exists( 'cob_services_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
+		// Main Nav menu
 		register_nav_menus( array(
 			'main-navigation' => esc_html__( 'Main Navigation Menu', 'cob-services' ),
 		) );
 
+		// Top Left Nav menu (login)
 		register_nav_menus( array(
 			'top-left' => esc_html__( 'Top Left Header Menu', 'cob-services' ),
-			//'walker' => new Walker_Nav_Icons()
 		) );
 
+		// Top Right Nav menu (cart)
 		register_nav_menus( array(
 			'top-right' => esc_html__( 'Top Right Header Menu', 'cob-services' ),
 		) );
@@ -69,10 +70,12 @@ if ( ! function_exists( 'cob_services_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
+		/*
 		add_theme_support( 'custom-background', apply_filters( 'cob_services_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
+		*/
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -170,7 +173,7 @@ add_action( 'wp_enqueue_scripts', 'cob_services_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+// require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -201,8 +204,8 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
-// Custom Functions Below
 
+// ------------------- Custom Functions Below ------------------- //
 
 // This function allows the upload of SVG Files
 function cc_mime_types($mimes) {
@@ -213,3 +216,6 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 // Get Custom Walker Class
 require get_template_directory() . '/inc/walker.php';
+
+// Get Custom Home Page feature
+require get_template_directory() . '/inc/home-page-feature.php';

@@ -43,7 +43,8 @@
     border-radius: 1px;
     -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    transition: transform .2s, opacity .2s, margin .2s;}
   .slicknav_menu:before {
     content: " ";
     display: table; }
@@ -133,7 +134,8 @@
   /* My new Style */
   position: absolute;
   top: 100%;
-  background-color: #024230;
+  /* background-color: #024230;*/
+  background-color: black;
   left: 0;
   width: 100%;
   /* End new Style */ }
@@ -175,3 +177,9 @@
   line-height: 30px;
   padding: 7px 12px;
   height: 44px; }
+
+@media screen and (max-width: 576px){
+  .slicknav_nav {
+    height: 100vh;
+  }
+}

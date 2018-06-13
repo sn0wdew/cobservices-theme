@@ -53,7 +53,27 @@
 	      </ul> -->
 	    </nav>
 	  </div>
-	  <div class="main-nav">
+
+		<?php
+		// Change background color to transparent if page is Home
+		if ( is_front_page() ) :
+		?>
+
+		<!-- Modifed main-nav -->
+		<div class="main-nav" style="background-color: transparent">
+
+		<?php
+		// Change background color to regular if page is not Home
+		else :
+			?>
+
+		<!-- Regular main-nav -->
+		<div class="main-nav">
+
+    <?php
+		// End If Statements
+	  endif;
+			?>
 	    <div class="container">
 				<?php
 				the_custom_logo();
