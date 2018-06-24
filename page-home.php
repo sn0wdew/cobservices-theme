@@ -28,6 +28,44 @@ get_header();
     </div>
 </div>
 
+<!-- Home Featured Service Section -->
+
+<?php
+
+// Cust Service Loop starts here
+
+
+
+
+ ?>
+
+<div class="container ft-service-container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Featured Services</h1>
+    </div>
+  </div>
+
+  <div class="ft-service-wrapper">
+
+    <div class="ft-service">
+      <div class="ft-wrapper">
+        <img src="http://unsplash.it/50px/50px">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="#">Human Resources</a></li>
+          <li><a href="#">Human Resources</a></li>
+          <li><a href="#">Human Resources</a></li>
+          <li><a href="#">Human Resources</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
 
 
 	<div id="primary" class="content-area">

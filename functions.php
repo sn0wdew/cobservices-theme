@@ -219,3 +219,6 @@ require get_template_directory() . '/inc/walker.php';
 
 // Get Custom Home Page feature
 require get_template_directory() . '/inc/home-page-feature.php';
+
+// Get Custom Post Types
+require get_template_directory() . '/template-parts/custom-post-types.php';
