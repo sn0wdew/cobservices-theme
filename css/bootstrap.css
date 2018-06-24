@@ -54,6 +54,10 @@
   width: device-width;
 }
 
+.hide {
+  display: none !important;
+}
+
 pre,
 code,
 kbd,

@@ -14,7 +14,8 @@ get_header();
 
 <div class="home-feature" style="background-image: url( <?php echo get_theme_mod('cob-services-hf-image') ?> ) ">
     <div class="home-feature-wrapper container">
-        <div class="row no-gutters">
+        <div class="row no-gutters table">
+          <div class="table-cell">
             <div class="col-md-7">
                 <h1><?php echo get_theme_mod('cob-services-hf-headline') ?></h1>
                 <h2><?php echo get_theme_mod('cob-services-hf-subline') ?></h2>
@@ -24,6 +25,7 @@ get_header();
                            onclick="window.location.href='<?php echo get_permalink(get_theme_mod('cob-services-hf-link')) ?>'" />
                 </form>
             </div>
+          </div>
         </div>
     </div>
 </div>
@@ -50,6 +52,8 @@ get_header();
 
     <div class="ft-service">
       <div class="ft-wrapper">
+        <div class="table">
+          <div class="table-cell">
         <img src="http://unsplash.it/50px/50px">
         <h2>Services</h2>
         <ul>
@@ -58,6 +62,8 @@ get_header();
           <li><a href="#">Human Resources</a></li>
           <li><a href="#">Human Resources</a></li>
         </ul>
+      </div>
+    </div>
       </div>
     </div>
 
