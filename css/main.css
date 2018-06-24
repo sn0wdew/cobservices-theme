@@ -143,16 +143,12 @@ nav ul li {
 @media screen and (max-width: 576px) {
   .home-feature {
     height: 95vh;
-    min-height: 523px;
-    padding-top: 33px;
+    min-height: 473px;
+    padding-top: 7em;
   }
 }
 
 .home-feature-wrapper {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
   color: white !important;
 }
 
