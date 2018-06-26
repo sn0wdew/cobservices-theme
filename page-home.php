@@ -35,11 +35,7 @@ get_header();
 <?php
 
 // Cust Service Loop starts here
-
-
-
-
- ?>
+?>
 
 <div class="container ft-service-container">
   <div class="row">
@@ -47,30 +43,28 @@ get_header();
       <h1>Featured Services</h1>
     </div>
   </div>
-
   <div class="ft-service-wrapper">
 
-    <div class="ft-service">
-      <div class="ft-wrapper">
-        <div class="table">
-          <div class="table-cell">
-        <img src="http://unsplash.it/50px/50px">
-        <h2>Services</h2>
-        <ul>
-          <li><a href="#">Human Resources</a></li>
-          <li><a href="#">Human Resources</a></li>
-          <li><a href="#">Human Resources</a></li>
-          <li><a href="#">Human Resources</a></li>
-        </ul>
-      </div>
-    </div>
-      </div>
-    </div>
+<?php
 
-  </div>
+$args = array('post_type' => 'cob_ft_services', 'post_per_page' => '-1');
+$query = new WP_Query( $args ); // custom wp_query
 
-</div>
+if ( $query->have_posts() ) :
 
+  while( $query->have_posts() ):
+    $query->the_post();
+
+    // *note* get_post_type == 'cob_ft_services.php'
+    get_template_part( 'template-parts/content', get_post_type() );
+
+  endwhile;
+endif;
+?>
+  </div><!--  .ft-service-wrapper -->
+</div><!--  .ft-service-container -->
+
+<?php wp_reset_query(); ?>
 
 
 
