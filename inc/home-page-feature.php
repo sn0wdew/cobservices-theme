@@ -65,11 +65,9 @@ function COB_Services_Home_Feature($wp_customize){
   $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'cob-services-hf-image-ctrl', array(
     'label'    => 'Featured Image',
     'section'  => 'cob-services-hf-section',
-    'settings' => 'cob-services-hf-image'  
+    'settings' => 'cob-services-hf-image'
   )));
 
 }
 
 add_action('customize_register', 'COB_Services_Home_Feature');
-
-?>

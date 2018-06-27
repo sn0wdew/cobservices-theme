@@ -76,8 +76,8 @@
 			?>
 	    <div class="container">
 
-					<h1><span class="hide"><?php bloginfo( 'name' ); ?></span></h1>
-					<h2><span class="hide"><?php bloginfo( 'description' ); ?></span></h2>
+					<h1><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></h1>
+					<h2><span class="screen-reader-text"><?php bloginfo( 'description' ); ?></span></h2>
 
 
 				<?php

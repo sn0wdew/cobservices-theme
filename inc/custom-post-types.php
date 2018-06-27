@@ -65,5 +65,3 @@ function COB_Services_Featured_Services() {
 */
 
 add_action( 'init', 'COB_Services_Featured_Services' );
-
-?>

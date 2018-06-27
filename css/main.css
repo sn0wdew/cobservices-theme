@@ -199,7 +199,7 @@ nav ul li {
   flex-wrap: wrap;
   -ms-flex-pack: distribute;
   -webkit-box-pack: center;
-  justify-content: center;
+  justify-content: space-between;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -216,7 +216,7 @@ nav ul li {
   background-color: #00694E;
   color: white !important;
   position: relative;
-  margin: 0 10px 10px 10px;
+  margin: 0 0 10px 0px;
   display: block;
   float: left;
 }

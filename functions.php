@@ -221,4 +221,7 @@ require get_template_directory() . '/inc/walker.php';
 require get_template_directory() . '/inc/home-page-feature.php';
 
 // Get Custom Post Types
-require get_template_directory() . '/template-parts/custom-post-types.php';
+require get_template_directory() . '/inc/custom-post-types.php';
+
+// Get Admin Page Functions
+require get_template_directory() . '/inc/function-admin.php';
