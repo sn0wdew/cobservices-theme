@@ -11,10 +11,12 @@ $color__text-input-focus: #111;
 $color__link: #05B4C6;
 $color__link-visited: #05B4C6;
 $color__link-hover: lighten($color__link, 20%);
-$color__text-main: black;
+$color__text-main: #000000;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+
+$color__primary: #00694E;
