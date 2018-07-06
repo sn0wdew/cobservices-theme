@@ -16,13 +16,13 @@ get_header();
     <div class="home-feature-wrapper container">
         <div class="row no-gutters table">
           <div class="table-cell">
-            <div class="col-md-7">
-                <h1><?php echo get_theme_mod('cob-services-hf-headline') ?></h1>
-                <h2><?php echo get_theme_mod('cob-services-hf-subline') ?></h2>
+            <div class="col-sm-12 col-md-9 col-lg-6">
+                <h1><?php echo esc_attr(get_option('home_feature')['headline']) ?></h1>
+                <h2><?php echo esc_attr(get_option('home_feature')['subline']) ?></h2>
                 <form class="home-feature-form" action="#">
                     <input class="btn btn-outline-dark" type="button"
-                           value="<?php echo get_theme_mod('cob-services-hf-button') ?>"
-                           onclick="window.location.href='<?php echo get_permalink(get_theme_mod('cob-services-hf-link')) ?>'" />
+                           value="<?php echo esc_attr(get_option('home_feature')['button_text']) ?>"
+                           onclick="window.location.href='<?php echo get_permalink(esc_attr(get_option('home_feature')['button_link'])) ?>'" />
                 </form>
             </div>
           </div>
@@ -30,42 +30,99 @@ get_header();
     </div>
 </div>
 
-<!-- Home Featured Service Section -->
+<!-- Home Banner Section -->
 
 <?php
-
-// Cust Service Loop starts here
+// Check if enabled option is selected
+if (esc_attr(get_option('home_banner_activate')) == 1):
 ?>
+
+<div class="home-banner">
+  <div class="container">
+    <div class="table">
+      <div class="col-sm-12 table-cell">
+        <marquee><?php echo( get_option('home_banner_text') ) ?></marquee>
+
+      </div><!-- .col-sm-12 -->
+    </div><!-- .table -->
+  </div><!-- .container -->
+</div><!-- .home-banner -->
+
+<?php endif; // End's Enabled verification for home banner ?>
+
+<!-- Home Featured Service Section -->
 
 <div class="container ft-service-container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1>Featured Services</h1>
+    <div class="col-sm-12 text-sm-center text-md-left">
+      <h2 class="h1">Featured Services</h2>
     </div>
   </div>
   <div class="ft-service-wrapper">
 
-<?php
+    <?php
 
-$args = array('post_type' => 'cob_ft_services', 'post_per_page' => '-1');
-$query = new WP_Query( $args ); // custom wp_query
+    $args = array('post_type' => 'cob_ft_services', 'post_per_page' => '-1');
+    $query = new WP_Query( $args ); // custom wp_query
 
-if ( $query->have_posts() ) :
+    if ( $query->have_posts() ) :
 
-  while( $query->have_posts() ):
-    $query->the_post();
+      while( $query->have_posts() ):
+        $query->the_post();
 
-    // *note* get_post_type == 'cob_ft_services.php'
-    get_template_part( 'template-parts/content', get_post_type() );
+        // *note* get_post_type == 'cob_ft_services.php'
+        get_template_part( 'template-parts/content', get_post_type() );
 
-  endwhile;
-endif;
-?>
-  </div><!--  .ft-service-wrapper -->
-</div><!--  .ft-service-container -->
+      endwhile;
+    endif;
+    ?>
+
+  </div><!-- .ft-service-wrapper -->
+</div><!-- .ft-service-container -->
 
 <?php wp_reset_query(); ?>
 
+<!-- Home Updates & Contact form Section -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6">Test</div>
+    <div class="col-12 col-md-6 home-updates">
+        <h2 class="text-center h1">Site Updates</h2>
+
+        <?php
+
+        $args = array(
+          'post_type' => 'cob_updates',
+          'post_per_page' => '3',
+          'tax_query' => array(
+            array(
+              'taxonomy' => 'Display Locations',
+              'field' => 'slug',
+              'terms'    => 'home-display-page'
+            )
+          ) // tax_query
+        ); // $args
+
+        $query = new WP_Query( $args ); // custom wp_query
+
+        if ( $query->have_posts() ) :
+
+          while( $query->have_posts() ):
+            $query->the_post();
+
+            // *note* get_post_type == 'cob_ft_services.php'
+            get_template_part( 'template-parts/content', get_post_type() );
+
+          endwhile;
+        endif;
+        ?>
+    </div><!-- .col-12 .col-md-6 .home-updates-->
+
+  </div><!-- .row -->
+</div><!-- .container -->
+
+<?php wp_reset_query(); ?>
 
 
 	<div id="primary" class="content-area">

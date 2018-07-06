@@ -20,6 +20,45 @@
 	<?php wp_head(); ?>
 </head>
 
+<?php
+
+	$args = array(
+		'post_type' => 'cob_updates',
+		'post_per_page' => '1',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'Display Locations',
+				'field' => 'slug',
+				'terms'    => 'Entire Website'
+			)
+		)
+	);
+
+$query = new WP_Query( $args ); // custom wp_query
+
+if ( $query->have_posts() ) :?>
+
+<div class="alert alert-warning alert-dismissible fade show" role="main-alert">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<?php
+	          $query->the_post();
+	          echo strip_tags(get_the_content());
+	      ?>
+			</div><!-- .col-12 -->
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div><!-- .row -->
+	</div> <!-- .container -->
+</div> <!-- [main-alert] -->
+
+<?php
+	endif; // End if statement for Entire Website Update type
+	wp_reset_query(); // Reset wpquery
+	?>
+
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'cob-services' ); ?></a>
@@ -75,10 +114,8 @@
 	  endif;
 			?>
 	    <div class="container">
-
 					<h1><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></h1>
 					<h2><span class="screen-reader-text"><?php bloginfo( 'description' ); ?></span></h2>
-
 
 				<?php
 				the_custom_logo();
