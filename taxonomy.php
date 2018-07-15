@@ -102,7 +102,7 @@ function COB_Services_Site_Contacts_Taxonomy(){
      'rewrite' => array('slug' => 'service_departments')
    );
 
- register_taxonomy( 'Service Departments', 'cob_contacts', $args );
+ register_taxonomy( 'Service Departments', array('cob_contacts', 'cob_services'), $args );
  }
 
  add_action( 'init', 'COB_Services_Site_Contacts_Taxonomy' ); // Create custom taxonomy

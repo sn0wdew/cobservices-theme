@@ -50,35 +50,36 @@ if (esc_attr(get_option('home_banner_activate')) == 1):
 
 <?php endif; // End's Enabled verification for home banner ?>
 
-<!-- Home Featured Service Section -->
+<!-- Home Service Section -->
 
-<div class="container ft-service-container">
-  <div class="row">
-    <div class="col-sm-12 text-sm-center text-md-left">
-      <h2 class="h1">Featured Services</h2>
+<div class="all-services">
+    <div class="container ft-service-container">
+        <div class="row">
+            <div class="col-sm-12 text-center text-md-left">
+                <h1>All Services</h1>
+            </div>
+        </div>
+
+        <div class="all-service-wrapper">
+          <?php
+
+          $args = array('post_type' => 'cob_services', 'post_per_page' => '-1');
+          $query = new WP_Query( $args ); // custom wp_query
+
+          if ( $query->have_posts() ) :
+
+            while( $query->have_posts() ):
+              $query->the_post();
+
+              // *note* get_post_type == 'cob_ft_services.php'
+              get_template_part( 'template-parts/content', get_post_type() );
+
+            endwhile;
+          endif;
+          ?>
+        </div>
     </div>
-  </div>
-  <div class="ft-service-wrapper">
-
-    <?php
-
-    $args = array('post_type' => 'cob_ft_services', 'post_per_page' => '-1');
-    $query = new WP_Query( $args ); // custom wp_query
-
-    if ( $query->have_posts() ) :
-
-      while( $query->have_posts() ):
-        $query->the_post();
-
-        // *note* get_post_type == 'cob_ft_services.php'
-        get_template_part( 'template-parts/content', get_post_type() );
-
-      endwhile;
-    endif;
-    ?>
-
-  </div><!-- .ft-service-wrapper -->
-</div><!-- .ft-service-container -->
+</div><!-- .all-services -->
 
 <?php wp_reset_query(); ?>
 
@@ -127,7 +128,7 @@ if (esc_attr(get_option('home_banner_activate')) == 1):
   </div><!-- .row -->
 </div><!-- .container -->
 
-<?php wp_reset_query(); ?>
+<?php wp_reset_postdata(); ?>
 
 <?php
 get_footer();
