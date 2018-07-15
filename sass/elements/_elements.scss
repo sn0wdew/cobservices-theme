@@ -37,6 +37,12 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
   display: block;
 }
 
+footer {
+  background-color: $color__primary;
+  color: white;
+  margin-top: 2.2em;
+}
+
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
@@ -44,6 +50,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  line-height: 1.7rem
 }
 
 abbr[title],

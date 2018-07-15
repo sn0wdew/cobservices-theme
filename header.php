@@ -114,8 +114,8 @@ if ( $query->have_posts() ) :?>
 	  endif;
 			?>
 	    <div class="container">
-					<h1><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></h1>
-					<h2><span class="screen-reader-text"><?php bloginfo( 'description' ); ?></span></h2>
+					<h1 class="screen-reader-text"><?php bloginfo( 'name' ); ?></h1>
+					<h2 class="screen-reader-text"><?php bloginfo( 'description' ); ?></h2>
 
 				<?php
 				the_custom_logo();
@@ -133,5 +133,3 @@ if ( $query->have_posts() ) :?>
 	</header>
 
   <!-- End Custom Header -->
-
-	<div id="content" class="site-content">

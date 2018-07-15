@@ -9,14 +9,14 @@
 
 ?>
 
-    <div class="ft-service">
-      <div class="ft-wrapper">
-        <div class="table">
-          <div class="table-cell">
-            <?php cob_services_post_thumbnail(); ?>
-            <h2><?php the_title( '<h2>', '</h2>' ); ?></h2>
-            <?php the_content(); ?>
-          </div><!--  .table-cell -->
-        </div><!--  .table -->
-      </div><!--  .ft-wrapper -->
-    </div><!--  .ft-service -->
+<div class="ft-service">
+  <div class="ft-wrapper">
+    <div class="table">
+      <div class="table-cell">
+        <?php cob_services_post_thumbnail('services-icon'); ?>
+        <?php the_title( '<h2>', '</h2>' ); ?>
+        <?php the_content(); ?>
+      </div><!--  .table-cell -->
+    </div><!--  .table -->
+  </div><!--  .ft-wrapper -->
+</div><!--  .ft-service -->

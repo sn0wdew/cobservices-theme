@@ -1,0 +1,24 @@
+/* ============ Home Banner Styles ============ */
+
+.contact-banner {
+  background-color: $color__gray;
+  height: 73px;
+  font-family: 'Open Sans', 'sans-serif';
+  font-size: 24px;
+  font-size: 2.4rem;
+  color: white !important;
+  text-align: center;
+}
+.contact-banner > .container {
+  height: 100%;
+}
+
+.contact-banner .h2 {
+  line-height: 73px;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.contact-banner form {
+  display: inline-block;
+}

@@ -10,3 +10,12 @@ $( document ).ready(function() {
       $(".slicknav_icon-bar:eq(2)").toggleClass("nav-swing-3");
   });
 });
+
+$( document ).ready(function() {
+    $('.all-services .ft-service').click(function(){
+        $(this).addClass('service-clicked');
+    });
+    $('.all-services .ft-service').one("mouseenter", function(){
+        $(this).addClass('service-clicked');
+    });
+});

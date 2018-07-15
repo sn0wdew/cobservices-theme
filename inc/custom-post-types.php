@@ -7,29 +7,29 @@
 *
  */
 
-function COB_Services_Featured_Services() {
+function COB_Services_All_Services() {
 
 // Set UI labels for Custom Post Type
     $labels = array(
-        'name'                =>  'Featured Services',
-        'singular_name'       =>  'Featured Service',
-        'menu_name'           =>  'Featured Services',
-        'all_items'           =>  'All Ft. Services',
-        'view_item'           =>  'View Ft. Services',
-        'add_new_item'        =>  'Add New Ft. Service',
+        'name'                =>  'All Services',
+        'singular_name'       =>  'Service',
+        'menu_name'           =>  'Services Offered',
+        'all_items'           =>  'All Services',
+        'view_item'           =>  'View Service',
+        'add_new_item'        =>  'Add New Service',
         'add_new'             =>  'Add New',
-        'edit_item'           =>  'Edit Ft. Service',
-        'update_item'         =>  'Update  Ft. Service',
-        'search_items'        =>  'Search  Ft. Service',
-        'not_found'           =>  'No Ft. Service Found',
-        'not_found_in_trash'  =>  'No Ft. Service Found in Trash'
+        'edit_item'           =>  'Edit Service',
+        'update_item'         =>  'Update Service',
+        'search_items'        =>  'Search Services',
+        'not_found'           =>  'No Service Found',
+        'not_found_in_trash'  =>  'No Service Found in Trash'
     );
 
 // Set other options for Custom Post Type
 
     $args = array(
-        'label'               =>  'featured services',
-        'description'         =>  'These featured services are visable only on the home page',
+        'label'               =>  'all services',
+        'description'         =>  'These services are visable on the home page',
         'labels'              =>  $labels,
         // Features this CPT supports in Post Editor
         'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions'),
@@ -50,13 +50,13 @@ function COB_Services_Featured_Services() {
         'menu_position'       => 5,
         // 'can_export'          => true,
         'has_archive'         => false,
-        'exclude_from_search' => true,
+        'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'post'
     );
 
     // Registering your Custom Post Type
-    register_post_type( 'cob_ft_services', $args );
+    register_post_type( 'cob_services', $args );
 
 }
 
@@ -65,7 +65,7 @@ function COB_Services_Featured_Services() {
 * unnecessarily executed.
 */
 
-add_action( 'init', 'COB_Services_Featured_Services' );
+add_action( 'init', 'COB_Services_All_Services' );
 
 
 /*
@@ -130,62 +130,119 @@ function COB_Services_Site_Updates() {
 
 add_action( 'init', 'COB_Services_Site_Updates' ); // Create custom post type
 
-// Custom Taxonomy for COB Updates
-function COB_Services_Site_Updates_Taxonomy(){
-  $labels = array(
-    'name' => 'Display Locations',
-    'singular_name' => 'Display Location',
-    'search_items' => 'Search Displays',
-    'all_items' => 'All Displays',
-    'edit_item' => 'Edit Location',
-    'update_item' => 'Update Location',
-    'add_new_item' => 'Add New Location',
-    'new_item_name' => 'Name of New Location',
-    'menu_name' => 'Display Locations'
-  );
+/*
+*
+* Custom Post Type: cob_contacts
+* Displayed on:     Contact Us, Services
+*
+ */
 
-  $args = array(
-    'hierarchical' => true,
-    'labels' => $labels,
-    'show_ui' => true,
-    'show_admin_column' => true,
-    'query_var' => true,
-    'rewrite' => array('slug' => 'locations_of_updates')
-  );
+function COB_Services_Site_Contacts() {
 
-register_taxonomy( 'Display Locations', 'cob_updates', $args );
+// Set UI labels for Custom Post Type
+    $labels = array(
+        'name'                =>  'Contacts',
+        'singular_name'       =>  'Contact',
+        'menu_name'           =>  'Contacts',
+        'all_items'           =>  'All Contacts',
+        'view_item'           =>  'View Contacts',
+        'add_new_item'        =>  'Create New Contact',
+        'add_new'             =>  'Create',
+        'edit_item'           =>  'Edit Contact',
+        'update_item'         =>  'Modify Contact',
+        'search_items'        =>  'Search Contact',
+        'not_found'           =>  'No such contact found.',
+        'not_found_in_trash'  =>  'No such contacts is in trash'
+    );
+
+// Set other options for Custom Post Type
+
+    $args = array(
+        'label'               =>  'contacts',
+        'description'         =>  'People who faculty can reach out to.',
+        'labels'              =>  $labels,
+        // Features this CPT supports in Post Editor
+        'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions'),
+        // You can associate this CPT with a taxonomy or custom taxonomy.
+        //'taxonomies'          => false,
+        /* A hierarchical CPT is like Pages and can have
+        * Parent and child items. A non-hierarchical CPT
+        * is like Posts.
+        */
+        'hierarchical'        => false,
+        'query_var'           => ture,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_icon'           => 'dashicons-id-alt',
+        'menu_position'       => 6,
+        // 'can_export'          => true,
+        'has_archive'         => false,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'post'
+    );
+
+    // Registering your Custom Post Type
+    register_post_type( 'cob_contacts', $args );
+
 }
 
-add_action( 'init', 'COB_Services_Site_Updates_Taxonomy' ); // Create custom taxonomy
+add_action( 'init', 'COB_Services_Site_Contacts' ); // Create custom post type
 
-// Custom Column Display
-add_filter( 'manage_cob_updates_posts_columns', 'cob_services_set_cob_updates_columns'); // Create custom $columns
-add_action( 'manage_cob_updates_posts_custom_column', 'cob_services_customize_cob_updates_columns', 10, 2); // Change how custom columns are displayed. The reason there is a 2 is because two arguments are being passed
+/*
+ =========================== - - - - - - - =================
+ Contact Custom Meta Field | cob_contacts | contact_location
+ ========================== - - - - - - - ==================
+*/
 
-function cob_services_set_cob_updates_columns( $columns ){
-  unset( $columns['title']);
-  $newColumns = array();
-  $newColumns['editor'] = 'Update';
-  $newColumns['category'] = 'Displayed On';
-  $newColumns['author'] = 'Created By';
-  $newColumns['date'] = 'Date';
-  return $newColumns;
+function COB_Services_Contacts_meta_box() {
+  add_meta_box('contact_location', 'Office Location', 'cob_contact_location_callback', 'cob_contacts', 'side' );
 }
 
-function cob_services_customize_cob_updates_columns( $column, $post_id ){
-  switch( $column ){
-    case 'editor':
-      echo get_the_content();
-      break;
-    case 'category':
-      $terms_list = wp_get_post_terms($post_id, 'Display Locations');
-      $i = 0;
-      foreach ($terms_list as $term ) {
-        $i++;
-        if ($i > 1){ echo ", ";}
-        echo $term->name;
-      }
-      break;
+add_action( 'add_meta_boxes', 'COB_Services_Contacts_meta_box');
 
+// Callback Function
+function cob_contact_location_callback( $post ){
+  // Create nonce field
+  wp_nonce_field('cob_save_contact_location_data', 'cob_contact_location_meta_box_nonce');
+  $value = get_post_meta( $post->ID, '_cob_contact_location_value_key', true);
+
+  // Print Input Box
+  echo '<label for="cob_contact_location_field">Office Location of Contact</label>';
+  echo '<input type="text" id="cob_contact_location_field" name="cob_contact_location_field" value="' . esc_attr($value) . '" size="15" />';
+}
+
+// Save function
+function cob_save_contact_location_data( $post_id ){
+
+  // Check if nonce was set when 'save button' is clicked - security
+  if( ! isset( $_POST['cob_contact_location_meta_box_nonce'])){
+    return; // hard stop to prevent malicious data
   }
+
+  // Check if nonce was generated by wordpress, not manually
+  if ( ! wp_verify_nonce( $_POST['cob_contact_location_meta_box_nonce'], 'cob_save_contact_location_data' )){
+    return;
+  }
+
+  // Verify user has correct permission to write data
+  if ( ! current_user_can('edit_post', $post_id)){
+    return;
+  }
+
+  // Verify data is actually in the box
+  if( ! isset( $_POST['cob_contact_location_field'])){
+    return;
+  }
+
+  // Sanatize the data before saving it
+  $custom_data = sanitize_text_field( $_POST['cob_contact_location_field'] );
+
+  update_post_meta( $post_id, '_cob_contact_location_value_key', $custom_data);
+
 }
+
+add_action( 'save_post', 'cob_save_contact_location_data');

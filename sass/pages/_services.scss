@@ -1,0 +1,100 @@
+/* ============ Services ============ */
+
+.all-service-wrapper {
+    display: block;
+    overflow: visible;
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.service-info {
+    clear: both;
+    height: 0;
+    opacity: 0;
+    display: none;
+    color: black !important;
+}
+
+.single-contact {
+    padding: 14px 0;
+}
+
+.single-contact + .single-contact {
+    border-top: solid 1px #C5C5C5;
+}
+
+.contact-left {
+    float: left;
+    width: 33%;
+    padding: 0 5px;
+}
+
+.contact-left img {
+    max-height: 56px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    width: auto;
+}
+
+.contact-left p {
+    line-height: 14px;
+    color: #024230;
+}
+
+.contact-right {
+    float: left;
+    width: 67%;
+    text-align: left;
+    color: #585858
+}
+
+.contact-right h3 {
+    line-height: 13px;
+    line-height: 1.3rem;
+    margin: 0 0 .2em 0;
+    color: black;
+}
+
+/* CSS When Service is Clicked */
+.service-clicked {
+    background-color: white;
+    height: auto !important;
+    display: table;
+}
+.service-clicked > .ft-wrapper{
+    border: 0px;
+    bottom: auto;
+    background-color: #00694E;
+    margin: 0;
+    height: 59px;
+    position: static;
+
+
+}
+.service-clicked > .ft-wrapper img {
+    display: none;
+}
+
+.service-clicked > .ft-wrapper h2 {
+    margin: 1rem 0;
+}
+
+.service-clicked > .ft-wrapper h2:after {
+    content: none;
+}
+
+.service-clicked .service-info {
+    height: auto;
+    opacity: 1;
+    display: block;
+
+}

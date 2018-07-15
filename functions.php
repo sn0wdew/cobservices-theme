@@ -218,10 +218,13 @@ add_filter('upload_mimes', 'cc_mime_types');
 require get_template_directory() . '/inc/walker.php';
 
 // Get Custom Home Page feature
-require get_template_directory() . '/inc/home-page-feature.php';
+require get_template_directory() . '/inc/customize-theme.php';
 
 // Get Custom Post Types
 require get_template_directory() . '/inc/custom-post-types.php';
+
+// Get Custom Taxonomy Fields
+require get_template_directory() . '/taxonomy.php';
 
 // Get Admin Page Functions
 require get_template_directory() . '/inc/function-admin.php';

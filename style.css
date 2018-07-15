@@ -363,16 +363,12 @@ textarea {
   font-size: 1.3rem;
   line-height: 1.5; }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 400 !important;
-  line-height: 1.2 !important; }
-
-h1, h3, h4, h5, h6,
-.h1, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
   font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
   color: inherit; }
 
 h1, .h1 {
@@ -382,26 +378,24 @@ h1, .h1 {
 h2, .h2 {
   font-size: 24px;
   font-size: 2.4rem;
-  font-family: 'Open Sans', serif; }
+  font-family: 'Open Sans', sans-serif; }
 
 h3, .h3 {
-  font-size: 1.75rem;
-  font-family: 'Open Sans', sans-serif; }
+  font-size: 1.7rem; }
 
 h4, .h4 {
-  font-size: 1.5rem;
-  font-family: 'Open Sans', sans-serif; }
+  font-size: 1.3rem; }
 
 h5, .h5 {
-  font-size: 1.25rem;
-  font-family: 'Open Sans', sans-serif; }
+  font-size: 1.25rem; }
 
 h6, .h6 {
-  font-size: 1rem;
-  font-family: 'Open Sans', sans-serif; }
+  font-size: 1rem; }
 
 p {
-  margin-bottom: 1.5em; }
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.7rem; }
 
 dfn, cite, em, i {
   font-style: italic; }
@@ -478,12 +472,18 @@ hr {
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
+footer {
+  background-color: #00694E;
+  color: white;
+  margin-top: 2.2em; }
+
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  line-height: 1.7rem; }
 
 abbr[title],
 abbr[data-original-title] {
@@ -1000,7 +1000,7 @@ nav ul li {
 
 /* ============ Home Ft Services Styles ============ */
 .ft-service-container {
-  margin: 2.2em auto; }
+  overflow: auto; }
 
 .ft-service-wrapper {
   display: block;
@@ -1013,7 +1013,7 @@ nav ul li {
   flex-wrap: wrap;
   -ms-flex-pack: distribute;
   -webkit-box-pack: center;
-  justify-content: space-between;
+  justify-content: center;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row; }
@@ -1029,44 +1029,28 @@ nav ul li {
   background-color: #00694E;
   color: white !important;
   position: relative;
-  margin: 0 0 10px 0px;
+  margin: 0 0 10rem 0px;
   display: block;
-  float: left; }
+  float: left;
+  -webkit-box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16); }
+
+.ft-service {
+  margin-right: 2rem;
+  margin-right: 20px; }
+
+.ft-service:last-child {
+  margin-right: 0; }
 
 /* Media Queries */
-.ft-service + .ft-service {
-  margin-left: 3rem;
-  margin-left: 30px; }
-
-.ft-service:nth-child(5n + 5) {
-  margin-left: 0px; }
-
-@media screen and (max-width: 1220px) {
-  .ft-service + .ft-service {
-    margin-left: 13%; }
-  .ft-service:nth-child(even) {
-    margin-right: 13%;
-    margin-left: 13%; }
-  .ft-service {
-    width: 30%;
-    margin-left: 13%; }
-  @supports (display: flex) {
-    .ft-service + .ft-service {
-      margin-left: 0; }
-    .ft-service:nth-child(even) {
-      margin-right: 0;
-      margin-left: 0; }
-    .ft-service {
-      margin-left: 0;
-      width: 270px;
-      width: 27rem; } } }
-
 @media screen and (max-width: 992px) {
-  .ft-service + .ft-service, .ft-service:nth-child(even), .ft-service {
+  .ft-service {
     width: 40%;
     margin-left: auto;
     margin-right: auto;
-    float: none; } }
+    float: none; }
+  .ft-service:last-child {
+    margin-right: auto; } }
 
 .ft-wrapper {
   position: absolute;
@@ -1103,7 +1087,7 @@ nav ul li {
   position: relative;
   display: block; }
 
-.ft-service a, .ft-service a:visited, ft-service a:visited {
+.ft-service a, .ft-service a:visited, .ft-service a:visited {
   color: white !important; }
 
 /* ============ Home Banner Styles ============ */
@@ -1118,6 +1102,9 @@ nav ul li {
 .home-banner > .container {
   height: 100%; }
 
+.home-banner marquee {
+  line-height: 73px; }
+
 /* ============ Home Updates ============ */
 .home-updates .card-title {
   clear: right; }
@@ -1129,9 +1116,9 @@ nav ul li {
 .home-updates .card {
   border-radius: 0px;
   border: none;
+  max-width: 475px;
   -webkit-box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
-  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
-  max-width: 475px; }
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16); }
 
 .card + .card {
   margin-top: 1em; }
@@ -1139,6 +1126,116 @@ nav ul li {
 .home-updates img {
   margin-right: 12.5px;
   border-radius: 50%; }
+
+.home-updates .card-text {
+  margin-top: 10px;
+  margin-top: 1rem; }
+
+/* ============ Services ============ */
+.all-service-wrapper {
+  display: block;
+  overflow: visible;
+  width: 100%;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+
+.service-info {
+  clear: both;
+  height: 0;
+  opacity: 0;
+  display: none;
+  color: black !important; }
+
+.single-contact {
+  padding: 14px 0; }
+
+.single-contact + .single-contact {
+  border-top: solid 1px #C5C5C5; }
+
+.contact-left {
+  float: left;
+  width: 33%;
+  padding: 0 5px; }
+
+.contact-left img {
+  max-height: 56px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  width: auto; }
+
+.contact-left p {
+  line-height: 14px;
+  color: #024230; }
+
+.contact-right {
+  float: left;
+  width: 67%;
+  text-align: left;
+  color: #585858; }
+
+.contact-right h3 {
+  line-height: 13px;
+  line-height: 1.3rem;
+  margin: 0 0 .2em 0;
+  color: black; }
+
+/* CSS When Service is Clicked */
+.service-clicked {
+  background-color: white;
+  height: auto !important;
+  display: table; }
+
+.service-clicked > .ft-wrapper {
+  border: 0px;
+  bottom: auto;
+  background-color: #00694E;
+  margin: 0;
+  height: 59px;
+  position: static; }
+
+.service-clicked > .ft-wrapper img {
+  display: none; }
+
+.service-clicked > .ft-wrapper h2 {
+  margin: 1rem 0; }
+
+.service-clicked > .ft-wrapper h2:after {
+  content: none; }
+
+.service-clicked .service-info {
+  height: auto;
+  opacity: 1;
+  display: block; }
+
+/* ============ Home Banner Styles ============ */
+.contact-banner {
+  background-color: #585858;
+  height: 73px;
+  font-family: 'Open Sans', 'sans-serif';
+  font-size: 24px;
+  font-size: 2.4rem;
+  color: white !important;
+  text-align: center; }
+
+.contact-banner > .container {
+  height: 100%; }
+
+.contact-banner .h2 {
+  line-height: 73px;
+  display: inline-block;
+  margin-right: 1em; }
+
+.contact-banner form {
+  display: inline-block; }
 
 /*--------------------------------------------------------------
 # Infinite scroll

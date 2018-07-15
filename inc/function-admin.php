@@ -21,12 +21,14 @@ function COB_Services_admin_page() {
 
   // Genereate Home Settings Sub-Page
   add_submenu_page( $admin_menu_slug, 'Home Options', 'Home', 'manage_options', 'cob_options_home', 'cob_theme_create_home_page');
+    // Activate custom settings on home page
+    add_action( 'admin_init', 'cob_services_custom_home_settings' );
 
-  // Genereate Services Settings Sub-Page
-  add_submenu_page( $admin_menu_slug, 'Services Options', 'Services', 'manage_options', 'cob_options_all_services', 'cob_theme_create_all_services_page');
+  // Genereate Contact Sub-Page
+  add_submenu_page( $admin_menu_slug, 'Contact Page Options', 'Contact', 'manage_options', 'cob_options_contact', 'cob_theme_create_contact_page');
+    // Activate custom settings on contact page
+    add_action( 'admin_init', 'cob_services_custom_contact_settings' );
 
-  // Activate custom settings on home page
-  add_action( 'admin_init', 'cob_services_custom_home_settings' );
 }
 
 // Main action to add admin menu
@@ -66,9 +68,37 @@ function cob_services_custom_home_settings(){
     // Setting - Text to display in Module
   add_settings_field( 'home-banner-text', 'Banner Text', 'cob_services_home_banner_text', $current_page, $current_section );
   register_setting( $current_group, 'home_banner_text', 'cob_sanitize_wysiwyg' );
+}
 
-  // --------- Featured Updates ---------//
-  
+ // Contact Page Settings
+function cob_services_custom_contact_settings(){
+  $current_page = 'cob_theme_create_contact_page'; // Current Page of all settings
+  $current_group = 'cob-services-settings-contact-group'; // 1 group per page
+
+  // --------- Contact Title Options ---------//
+  $current_section = 'cob-services-contact-main-options'; // Section for Variables
+    // Section
+  add_settings_section( $current_section, 'Page Options', 'cob_services_contact_main_options', $current_page );
+    // Fields
+  add_settings_field( 'contact-title', 'Title', 'cob_services_contanct_title_callback', $current_page, $current_section );
+  add_settings_field( 'contact-subtitle', 'Subtitle', 'cob_services_contanct_subtitle_callback', $current_page, $current_section );
+    // Register Settings for 'home-feature'
+  register_setting( $current_group, 'contact_main');
+  register_setting( $current_group, 'contact_main_subtitle', 'cob_sanitize_wysiwyg' );
+
+  // --------- Contact Banner Options ---------//
+  $current_section = 'cob-services-contact-banner-options'; // Section for Variables
+    // Section
+  add_settings_section( $current_section, 'Banner Options', 'cob_services_contact_banner_options', $current_page );
+    // Fields
+  add_settings_field( 'contact-button-enable', 'Enable Banner', 'cob_services_contanct_banner_enable_callback', $current_page, $current_section );
+  add_settings_field( 'contact-banner-text', 'Banner Text', 'cob_services_contanct_banner_text_callback', $current_page, $current_section );
+  add_settings_field( 'contact-button-text', 'Button Text', 'cob_services_contanct_button_text_callback', $current_page, $current_section );
+  add_settings_field( 'contact-button-link', 'Button Link', 'cob_services_contanct_button_link_callback', $current_page, $current_section );
+    // Register Settings for 'home-feature'
+  register_setting( $current_group, 'contact_banner_enable');
+  register_setting( $current_group, 'contact_banner');
+
 }
 
 
@@ -86,6 +116,15 @@ function cob_services_home_banner_options(){
   echo "<p>These options are for the Banner module on the home page.</p>";
 }
 
+// Contact Main Section
+function cob_services_contact_main_options(){
+  echo "<p>These options are for the Contact page.</p>";
+}
+
+// Contact Banner Section
+function cob_services_contact_banner_options(){
+
+}
 
 /****************************************************
  *                  Field Functions                 *
@@ -109,6 +148,7 @@ function cob_services_home_button_text_callback(){
   echo '<input type="text" name="home_feature[button_text]" value="' . esc_attr($options['button_text']) . '" placeholder="Button Text" />';
 }
 
+// Home Feature - Button Link
 function cob_services_home_button_link_callback(){
   $options = get_option('home_feature'); // Get value
   wp_dropdown_pages(
@@ -125,7 +165,7 @@ function cob_services_home_button_link_callback(){
  // Home Banner - Activate
 function cob_services_home_banner_activate_callback(){
   $options = esc_attr(get_option('home_banner_activate'));
-  echo '<input id ="checkbox_banner_activate" type="checkbox" name="home_banner_activate" value="1"';
+  echo '<input id="checkbox_banner_activate" type="checkbox" name="home_banner_activate" value="1"';
   if ( $options == 1 ) {
     echo ' checked';
   }
@@ -147,6 +187,54 @@ function cob_services_home_banner_text(){
   echo wp_editor( $options, 'cobbannertext', $args );
 }
 
+// Contact Page Options - Title
+function cob_services_contanct_title_callback(){
+  $options = get_option('contact_main'); // Get value
+  echo '<input type="text" name="contact_main[title]" value="' . esc_attr($options['title']) . '" placeholder="Contact" />';
+}
+
+// Contact Page Options - Subtitle
+function cob_services_contanct_subtitle_callback(){
+  $options = get_option('contact_main_subtitle'); // Get value
+
+  $args = array(
+    'textarea_name' => 'contact_main_subtitle',
+    'textarea_rows' => '5',
+    'media_buttons' => false,
+    'teeny' => true
+  );
+
+  echo wp_editor( $options, 'cobcontactsub', $args );
+}
+
+// Contact Banner Options - Enable
+function cob_services_contanct_banner_enable_callback(){
+  $options = esc_attr(get_option('contact_banner_enable'));
+  echo '<input id ="contact_banner_enable" type="checkbox" name="contact_banner_enable" value="1"';
+  if ( $options == 1 ) {
+    echo ' checked';
+  }
+  echo ' />';
+  echo '<label for="contact_banner_enable">Display this banner? (default is checked)</label>';
+}
+
+// Contact Banner Options - Banner Text
+function cob_services_contanct_banner_text_callback(){
+  $options = get_option('contact_banner'); // Get value
+  echo '<input type="text" name="contact_banner[banner_text]" value="' . esc_attr($options['banner_text']) . '" placeholder="Banner Text" size="30" />';
+}
+
+// Contact Banner Options - Button Text
+function cob_services_contanct_button_text_callback(){
+  $options = get_option('contact_banner'); // Get value
+  echo '<input type="text" name="contact_banner[button_text]" value="' . esc_attr($options['button_text']) . '" placeholder="Button Text" />';
+}
+
+// Contact Banner Options - Button Link
+function cob_services_contanct_button_link_callback(){
+  $options = get_option('contact_banner'); // Get value
+  echo '<input type="text" name="contact_banner[button_link]" value="' . esc_attr($options['button_link']) . '" placeholder="Button Link" />';
+}
 
 /****************************************************
  *                Sanatize Functions                *
@@ -156,6 +244,7 @@ function cob_sanitize_wysiwyg( $input ) {
   $input = strip_tags($input, '<a>');
   return $input;
 }
+
 
 /****************************************************
  *                  Page Functions                  *
@@ -171,6 +260,7 @@ function cob_theme_create_home_page() {
   require_once( get_template_directory() . '/inc/templates/cob-services-home.php' );
 }
 
-function cob_theme_create_all_services_page() {
-
+function cob_theme_create_contact_page() {
+  // Page HTMl
+  require_once( get_template_directory() . '/inc/templates/cob-services-contact.php' );
 }
