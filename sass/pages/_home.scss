@@ -91,7 +91,7 @@
   background-color: $color__primary;
   color: white !important;
   position: relative;
-  margin: 0 0 10rem 0px;
+  margin: 0 0 6rem 0px;
   display: block;
   float: left;
   -webkit-box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .16);
@@ -163,7 +163,7 @@
 }
 
 .ft-service a, .ft-service a:visited, .ft-service a:visited {
-  color: white !important;
+  color: white;
 }
 
 .service-links {
@@ -172,6 +172,7 @@
   text-align: left;
 
   a {
+    color: $color__secondary !important;
     &:hover, &:active, &:visited {
       color: $color__secondary !important;
     }
@@ -188,13 +189,24 @@
 
 /* ============ Home Banner Styles ============ */
 
-.home-banner{
+.home-banner {
   background-color: $color__primary;
   height: 73px;
   font-family: 'Open Sans', 'sans-serif';
   font-size: 24px;
   font-size: 2.4rem;
   color: white !important;
+}
+
+.home-banner::after{
+  position: absolute;
+  content: "";
+  display: block;
+  height: 30px;
+  width: 30px;
+  background-color: #00694e;
+  left: 50%;
+  transform: translateX(-15px) translateY(-15px) rotate(45deg);
 }
 .home-banner > .container {
   height: 100%;

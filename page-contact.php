@@ -20,7 +20,7 @@ get_header();
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-8 text-center">
                 <h1><?php echo esc_attr(get_option('contact_main')['title']); ?></h1>
-                <h2 class="mb-4"><?php echo get_option('contact_main_subtitle'); ?></h2>
+                <h2><?php echo get_option('contact_main_subtitle'); ?></h2>
             </div>
         </div>
 
@@ -117,27 +117,6 @@ if (esc_attr(get_option('contact_banner_enable')) == 1):
   </div><!-- .container -->
 </div><!-- .home-banner -->
 
-<?php endif; // End's Enabled verification for home banner ?>
+<?php endif; // End's Enabled verification for home banner
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
 get_footer();

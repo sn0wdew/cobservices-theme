@@ -9,26 +9,15 @@
 
 get_header();
 ?>
-
-<!-- Home Feature Section -->
-
-<div class="home-feature" style="background-image: url( <?php echo get_theme_mod('cob-services-hf-image') ?> ) ">
-    <div class="home-feature-wrapper container">
-        <div class="row no-gutters table">
-          <div class="table-cell">
-            <div class="col-sm-12 col-md-9 col-lg-6">
-                <h1><?php echo esc_attr(get_option('home_feature')['headline']) ?></h1>
-                <h2><?php echo esc_attr(get_option('home_feature')['subline']) ?></h2>
-                <form class="home-feature-form" action="#">
-                    <input class="btn btn-outline-dark" type="button"
-                           value="<?php echo esc_attr(get_option('home_feature')['button_text']) ?>"
-                           onclick="window.location.href='<?php echo get_permalink(esc_attr(get_option('home_feature')['button_link'])) ?>'" />
-                </form>
-            </div>
-          </div>
+<!-- Home Tips Section -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 text-center">
+            <h1><?php echo esc_attr(get_option('home_tips')['headline']); ?></h1>
+            <h2 class="mb-4"><?php echo esc_attr(get_option('home_tips')['subline']); ?></h2>
         </div>
     </div>
-</div>
+</div
 
 <!-- Home Banner Section -->
 
@@ -55,7 +44,7 @@ if (esc_attr(get_option('home_banner_activate')) == 1):
 <div class="all-services">
     <div class="container ft-service-container">
         <div class="row">
-            <div class="col-sm-12 text-center text-md-left">
+            <div class="col-sm-12 text-center">
                 <h1>All Services</h1>
             </div>
         </div>

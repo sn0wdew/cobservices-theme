@@ -378,19 +378,24 @@ h1, .h1 {
 h2, .h2 {
   font-size: 24px;
   font-size: 2.4rem;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 0px; }
 
 h3, .h3 {
-  font-size: 1.7rem; }
+  font-size: 1.7rem;
+  margin-top: 0px; }
 
 h4, .h4 {
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+  margin-top: 0px; }
 
 h5, .h5 {
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  margin-top: 0px; }
 
 h6, .h6 {
-  font-size: 1rem; }
+  font-size: 1rem;
+  margin-top: 0px; }
 
 p {
   margin-top: 0;
@@ -1029,7 +1034,7 @@ nav ul li {
   background-color: #00694E;
   color: white !important;
   position: relative;
-  margin: 0 0 10rem 0px;
+  margin: 0 0 6rem 0px;
   display: block;
   float: left;
   -webkit-box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
@@ -1088,14 +1093,16 @@ nav ul li {
   display: block; }
 
 .ft-service a, .ft-service a:visited, .ft-service a:visited {
-  color: white !important; }
+  color: white; }
 
 .service-links {
   border-top: solid 1px #C5C5C5;
   padding: 14px 0;
   text-align: left; }
-  .service-links a:hover, .service-links a:active, .service-links a:visited {
+  .service-links a {
     color: #024230 !important; }
+    .service-links a:hover, .service-links a:active, .service-links a:visited {
+      color: #024230 !important; }
   .service-links ul {
     margin-left: 2.8rem; }
   .service-links li {
@@ -1109,6 +1116,18 @@ nav ul li {
   font-size: 24px;
   font-size: 2.4rem;
   color: white !important; }
+
+.home-banner::after {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 30px;
+  width: 30px;
+  background-color: #00694e;
+  left: 50%;
+  -webkit-transform: translateX(-15px) translateY(-15px) rotate(45deg);
+  -ms-transform: translateX(-15px) translateY(-15px) rotate(45deg);
+  transform: translateX(-15px) translateY(-15px) rotate(45deg); }
 
 .home-banner > .container {
   height: 100%; }
@@ -1157,7 +1176,9 @@ nav ul li {
   justify-content: center;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
-  flex-direction: row; }
+  flex-direction: row;
+  margin-top: 30px;
+  margin-top: 3rem; }
 
 .service-info {
   clear: both;
@@ -1230,23 +1251,33 @@ nav ul li {
 /* ============ Home Banner Styles ============ */
 .contact-banner {
   background-color: #585858;
-  height: 73px;
+  min-height: 73px;
   font-family: 'Open Sans', 'sans-serif';
   font-size: 24px;
   font-size: 2.4rem;
   color: white !important;
-  text-align: center; }
+  text-align: center;
+  line-height: 73px; }
 
 .contact-banner > .container {
   height: 100%; }
 
 .contact-banner .h2 {
-  line-height: 73px;
   display: inline-block;
   margin-right: 1em; }
 
 .contact-banner form {
   display: inline-block; }
+
+@media screen and (max-width: 768px) {
+  .contact-banner {
+    line-height: 24px;
+    height: auto;
+    padding: 1em 0; }
+  .contact-banner .h2 {
+    margin-right: 0px; }
+  .contact-banner form {
+    margin-top: 1rem; } }
 
 /*--------------------------------------------------------------
 # Infinite scroll

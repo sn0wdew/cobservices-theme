@@ -46,16 +46,14 @@ function cob_services_custom_home_settings(){
 
 
   // --------- Home Page Feature ---------//
-  $current_section = 'cob-services-home-feature-options'; // Section for Variables
+  $current_section = 'cob-services-home-tips-options'; // Section for Variables
     // Section
-  add_settings_section( $current_section, 'Home Feature Options', 'cob_services_home_feature_options_callback', $current_page);
+  add_settings_section( $current_section, 'Home Tips', 'cob_services_home_tips_options_callback', $current_page);
     // Fields
-  add_settings_field( 'home-feature-headline', 'Headline', 'cob_services_home_headline_callback', $current_page, $current_section ); // Field - Headline
-  add_settings_field( 'home-feature-subline', 'Subline', 'cob_services_home_subline_callback', $current_page, $current_section ); // Field - Subline
-  add_settings_field( 'home-feature-button-text', 'Button Text', 'cob_services_home_button_text_callback', $current_page, $current_section ); // Field - Button Text
-  add_settings_field( 'home-feature-button-link', 'Button Link To', 'cob_services_home_button_link_callback', $current_page, $current_section ); // Field - Button Link
+  add_settings_field( 'home-tips-headline', 'Headline', 'cob_services_home_headline_callback', $current_page, $current_section ); // Field - Headline
+  add_settings_field( 'home-tips-subline', 'Subline', 'cob_services_home_subline_callback', $current_page, $current_section ); // Field - Subline
     // Register Settings for 'home-feature'
-  register_setting( $current_group, 'home_feature');
+  register_setting( $current_group, 'home_tips');
 
 
   // --------- Banner Options ---------//
@@ -107,8 +105,8 @@ function cob_services_custom_contact_settings(){
  ****************************************************/
 
  // Home Feature Section
-function cob_services_home_feature_options_callback(){
-echo "<p>These options are for the Feature module on the home page.</p>";
+function cob_services_home_tips_options_callback(){
+echo "<p>These options are for the home tips section on the home page.</p>";
 }
 
  // Home Banner Section
@@ -132,35 +130,35 @@ function cob_services_contact_banner_options(){
 
 // Home Feature - Headline
 function cob_services_home_headline_callback(){
-  $options = get_option('home_feature'); // Get value
-  echo '<input type="text" name="home_feature[headline]" value="' . esc_attr($options['headline']) . '" placeholder="Headline Text" />';
+  $options = get_option('home_tips'); // Get value
+  echo '<input type="text" name="home_tips[headline]" value="' . esc_attr($options['headline']) . '" placeholder="Headline Text" />';
 }
 
 // Home Feature - Subline
 function cob_services_home_subline_callback(){
-  $options = get_option('home_feature'); // Get value
-  echo '<textarea name="home_feature[subline]" placeholder="Subline Text" rows="4" cols="50" >' . esc_attr($options['subline']) . '</textarea>';
+  $options = get_option('home_tips'); // Get value
+  echo '<textarea name="home_tips[subline]" placeholder="Subline Text" rows="4" cols="50" >' . esc_attr($options['subline']) . '</textarea>';
 }
 
-// Home Feature - Button Text
-function cob_services_home_button_text_callback(){
-  $options = get_option('home_feature'); // Get value
-  echo '<input type="text" name="home_feature[button_text]" value="' . esc_attr($options['button_text']) . '" placeholder="Button Text" />';
-}
-
-// Home Feature - Button Link
-function cob_services_home_button_link_callback(){
-  $options = get_option('home_feature'); // Get value
-  wp_dropdown_pages(
-        array(
-             'name' => 'home_feature[button_link]',
-             'echo' => 1,
-             'show_option_none' => __( '&mdash; Select &mdash;' ),
-             'option_none_value' => '0',
-             'selected' => $options['button_link']
-        )
-    );
-}
+// // Home Feature - Button Text
+// function cob_services_home_button_text_callback(){
+//   $options = get_option('home_feature'); // Get value
+//   echo '<input type="text" name="home_feature[button_text]" value="' . esc_attr($options['button_text']) . '" placeholder="Button Text" />';
+// }
+//
+// // Home Feature - Button Link
+// function cob_services_home_button_link_callback(){
+//   $options = get_option('home_feature'); // Get value
+//   wp_dropdown_pages(
+//         array(
+//              'name' => 'home_feature[button_link]',
+//              'echo' => 1,
+//              'show_option_none' => __( '&mdash; Select &mdash;' ),
+//              'option_none_value' => '0',
+//              'selected' => $options['button_link']
+//         )
+//     );
+// }
 
  // Home Banner - Activate
 function cob_services_home_banner_activate_callback(){
