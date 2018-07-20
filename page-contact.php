@@ -80,7 +80,7 @@ get_header();
                   	endwhile;
                   endif;
 
-                  wp_reset_query();
+                  wp_reset_postdata();
                   ?>
 
                 </div><!-- .contacts -->

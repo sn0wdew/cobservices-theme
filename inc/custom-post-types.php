@@ -2,7 +2,94 @@
 
 /*
 *
-* Custom Post Type: Featured Services
+* Custom Post Type: Quick Tips
+* Displayed on:     Home Page
+*
+ */
+
+function COB_Services_Quick_Tips() {
+
+// Set UI labels for Custom Post Type
+    $labels = array(
+        'name'                =>  'Quick Tips',
+        'singular_name'       =>  'Quick Tip',
+        'menu_name'           =>  'Quick Tips',
+        'all_items'           =>  'All Quick Tips',
+        'view_item'           =>  'View Quick Tip',
+        'add_new_item'        =>  'Add New Quick Tip',
+        'add_new'             =>  'Add New',
+        'edit_item'           =>  'Edit Quick Tip',
+        'update_item'         =>  'Update Quick Tip',
+        'search_items'        =>  'Search Quick Tips',
+        'not_found'           =>  'No Quick Tips Found',
+        'not_found_in_trash'  =>  'No Quick Tips Found in Trash'
+    );
+
+// Set other options for Custom Post Type
+
+    $args = array(
+        'label'               =>  'quick tips',
+        'description'         =>  'These tips are visable on the home page',
+        'labels'              =>  $labels,
+        // Features this CPT supports in Post Editor
+        'supports'            => array( 'editor', 'revisions', 'page-attributes'),
+        // You can associate this CPT with a taxonomy or custom taxonomy.
+        //'taxonomies'          => false,
+        /* A hierarchical CPT is like Pages and can have
+        * Parent and child items. A non-hierarchical CPT
+        * is like Posts.
+        */
+        'hierarchical'        => true,
+        'query_var'           => ture,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_icon'           => 'dashicons-megaphone',
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        // 'can_export'          => true,
+        'has_archive'         => false,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'post'
+    );
+
+    // Registering your Custom Post Type
+    register_post_type( 'cob_tips', $args );
+
+}
+// Check if home tips was enabled before registering post type
+if (esc_attr(get_option('home_tips')['enable']) == 1){
+  add_action( 'init', 'COB_Services_Quick_Tips' );
+}
+
+// Custom Column Display
+add_filter( 'manage_cob_tips_posts_columns', 'cob_services_set_cob_tips_columns'); // Create custom $columns
+add_action( 'manage_cob_tips_posts_custom_column', 'cob_services_customize_cob_tips_columns', 10, 2); // Change how custom columns are displayed. The reason there is a 2 is because two arguments are being passed
+
+function cob_services_set_cob_tips_columns( $columns ){
+  $newColumns = array();
+  $newColumns['tip'] = 'Tip';
+  $newColumns['order'] = 'Display Order';
+  $newColumns['date'] = 'Date';
+  return $newColumns;
+}
+
+function cob_services_customize_cob_tips_columns( $column, $post_id ){
+  switch( $column ){
+    case 'tip':
+      echo get_the_content();
+      break;
+    case 'order':
+      echo get_post_field( 'menu_order', $post_id);
+      break;
+  }
+}
+
+/*
+*
+* Custom Post Type: All Services
 * Displayed on:     Home Page
 *
  */
@@ -59,11 +146,6 @@ function COB_Services_All_Services() {
     register_post_type( 'cob_services', $args );
 
 }
-
-/* Hook into the 'init' action so that the function
-* Containing our post type registration is not
-* unnecessarily executed.
-*/
 
 add_action( 'init', 'COB_Services_All_Services' );
 

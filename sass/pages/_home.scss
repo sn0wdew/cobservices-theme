@@ -1,3 +1,22 @@
+/* ============ Home Quick Tips ============ */
+.home-quick-tips {
+  overflow-y: auto;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-quick-tips .container {
+  margin-bottom: 22px;
+  margin-bottom: 2.2rem;
+}
+.home-quick-tips .card {
+  margin-bottom: 15px;
+  border-radius: 0px;
+  border: none;
+  -webkit-box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .16);
+        box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .16);
+}
+
 /* ============ Home Feature Styles ============ */
 
 .home-feature {
@@ -163,7 +182,7 @@
 }
 
 .ft-service a, .ft-service a:visited, .ft-service a:visited {
-  color: white;
+  color: $color__secondary;
 }
 
 .service-links {
@@ -216,6 +235,12 @@
   line-height: 73px;
 }
 
+/* ============ Home Lower Mixed ============ */
+.home-lower-mixed {
+  margin-bottom: 28px;
+  margin-bottom: 2.8rem
+}
+
 /* ============ Home Updates ============ */
 
 .home-updates .card-title{
@@ -236,7 +261,7 @@
           box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .16);
 }
 
-.card + .card{
+.home-updates .card + .home-updates .card{
   margin-top: 1em;
 }
 

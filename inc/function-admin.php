@@ -5,7 +5,15 @@
  * @package COB_Services
  */
 
+// Register admin scripts
+function cob_admin_enque_scripts(){
+  wp_register_script( 'cob-admin-script', get_template_directory_uri() . '/js/cob-admin.js', array('jquery'), '1.0.0', true);
+  wp_enqueue_script('cob-admin-script' );
+  wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'cob_admin_enque_scripts');
 
+// Generate Admin Control Page
 function COB_Services_admin_page() {
   $admin_page_title = 'COB Services Theme Options';
   $admin_menu_title = 'Theme Opt';
@@ -45,16 +53,17 @@ function cob_services_custom_home_settings(){
   $current_group = 'cob-services-settings-home-group'; // 1 group per page
 
 
-  // --------- Home Page Feature ---------//
+  // --------- Home Quick Tips ---------//
   $current_section = 'cob-services-home-tips-options'; // Section for Variables
     // Section
   add_settings_section( $current_section, 'Home Tips', 'cob_services_home_tips_options_callback', $current_page);
     // Fields
+  add_settings_field( 'home-tips-enable', 'Enable Tips', 'cob_services_home_enable_callback', $current_page, $current_section ); // Field - Headline
   add_settings_field( 'home-tips-headline', 'Headline', 'cob_services_home_headline_callback', $current_page, $current_section ); // Field - Headline
   add_settings_field( 'home-tips-subline', 'Subline', 'cob_services_home_subline_callback', $current_page, $current_section ); // Field - Subline
+  add_settings_field( 'home-tips-bk', 'Background Image', 'cob_services_home_bk_callback', $current_page, $current_section ); // Field - Subline
     // Register Settings for 'home-feature'
   register_setting( $current_group, 'home_tips');
-
 
   // --------- Banner Options ---------//
   $current_section = 'cob-services-home-banner-options'; // Section for Variables
@@ -66,6 +75,19 @@ function cob_services_custom_home_settings(){
     // Setting - Text to display in Module
   add_settings_field( 'home-banner-text', 'Banner Text', 'cob_services_home_banner_text', $current_page, $current_section );
   register_setting( $current_group, 'home_banner_text', 'cob_sanitize_wysiwyg' );
+
+  // --------- Home Form Section ---------//
+  $current_section = 'cob-services-home-form-options'; // Section for Variables
+    // Section
+  add_settings_section( $current_section, 'Home Form', 'cob_services_home_form_options_callback', $current_page);
+    // Fields
+  add_settings_field( 'home-form-enable', 'Enable Form', 'cob_services_home_form_enable_callback', $current_page, $current_section ); // Field - Headline
+  add_settings_field( 'home-form-headline', 'Headline', 'cob_services_home_form_headline_callback', $current_page, $current_section ); // Field - Headline
+  add_settings_field( 'home-form-subline', 'Subline', 'cob_services_home_form_subline_callback', $current_page, $current_section ); // Field - Subline
+  add_settings_field( 'home-form-shortcode', 'Shortcode', 'cob_services_home_form_code_callback', $current_page, $current_section ); // Field - Subline
+    // Register Settings for 'home-feature'
+  register_setting( $current_group, 'home_form');
+  register_setting( $current_group, 'home_form_subline', 'cob_sanitize_wysiwyg');
 }
 
  // Contact Page Settings
@@ -104,7 +126,7 @@ function cob_services_custom_contact_settings(){
  *                Section Functions                 *
  ****************************************************/
 
- // Home Feature Section
+ // Home Quick Tips
 function cob_services_home_tips_options_callback(){
 echo "<p>These options are for the home tips section on the home page.</p>";
 }
@@ -112,6 +134,10 @@ echo "<p>These options are for the home tips section on the home page.</p>";
  // Home Banner Section
 function cob_services_home_banner_options(){
   echo "<p>These options are for the Banner module on the home page.</p>";
+}
+
+function cob_services_home_form_options_callback(){
+  echo "<p>These options are for the form module on the home page.</p>";
 }
 
 // Contact Main Section
@@ -128,16 +154,35 @@ function cob_services_contact_banner_options(){
  *                  Field Functions                 *
  ****************************************************/
 
-// Home Feature - Headline
+// Home Quick Tips - Enable
+function cob_services_home_enable_callback(){
+  $options = get_option('home_tips');
+  echo '<input id="home_tips[enable]" type="checkbox" name="home_tips[enable]" value="1"';
+  if ( $options['enable'] == 1 ) {
+    echo ' checked';
+  }
+  echo ' />';
+  echo '<label for="home_tips[enable]">Display Home Tips? (default is checked)</label>';
+}
+
+// Home Quick Tips - Headline
 function cob_services_home_headline_callback(){
   $options = get_option('home_tips'); // Get value
   echo '<input type="text" name="home_tips[headline]" value="' . esc_attr($options['headline']) . '" placeholder="Headline Text" />';
 }
 
-// Home Feature - Subline
+// Home Quick Tips - Subline
 function cob_services_home_subline_callback(){
   $options = get_option('home_tips'); // Get value
   echo '<textarea name="home_tips[subline]" placeholder="Subline Text" rows="4" cols="50" >' . esc_attr($options['subline']) . '</textarea>';
+}
+
+// Home Quick Tips - BK Image
+function cob_services_home_bk_callback(){
+  $options = get_option('home_tips'); // Get value
+  echo '<input id="tips-upload-button" class="button button-secondary" type="button" value="Upload BK Image" />';
+  echo '<input id="tips-upload-button-rm" class="button button-secondary" type="button" value="Remove BK Image" />';
+  echo '<input id="tips-bk-image" type="hidden" name="home_tips[bk]" value="' . esc_attr($options['bk']) . '" />';
 }
 
 // // Home Feature - Button Text
@@ -183,6 +228,43 @@ function cob_services_home_banner_text(){
   );
 
   echo wp_editor( $options, 'cobbannertext', $args );
+}
+
+// Home Form - Enable
+function cob_services_home_form_enable_callback(){
+  $options = get_option('home_form');
+  echo '<input id="home_form[enable]" type="checkbox" name="home_form[enable]" value="1"';
+  if ( $options['enable'] == 1 ) {
+    echo ' checked';
+  }
+  echo ' />';
+  echo '<label for="home_form[enable]">Display Home Form Section? (default is checked)</label>';
+}
+
+// Home Form - Headline
+function cob_services_home_form_headline_callback(){
+  $options = get_option('home_form');
+  echo '<input type="text" name="home_form[headline]" value="' . esc_attr($options['headline']) . '" placeholder="Headline Text" />';
+}
+
+// Home Form - Subline
+function cob_services_home_form_subline_callback(){
+  $options = get_option('home_form_subline');
+  $args = array(
+    'textarea_name' => 'home_form_subline',
+    'textarea_rows' => '5',
+    'media_buttons' => false,
+    'teeny' => true
+  );
+
+  echo wp_editor( $options, 'homeformsubline', $args );
+}
+
+// Home Form - Short Code
+function cob_services_home_form_code_callback(){
+  $options = get_option('home_form');
+  echo '<input type="text" name="home_form[code]" value="' . esc_attr($options['code']) . '" placeholder="[shortcode]" />';
+  echo '<label for="home_form[code]">To find the shortcode, open any page, insert a form using the tool, and copy the [code] including brackets</label>';
 }
 
 // Contact Page Options - Title
