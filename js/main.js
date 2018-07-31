@@ -1,3 +1,4 @@
+// Mobile Navigation Function
 $( document ).ready(function() {
   $('#menu').slicknav({
     label: '',
@@ -11,11 +12,21 @@ $( document ).ready(function() {
   });
 });
 
+// All Services Transition
 $( document ).ready(function() {
-    $('.all-services .ft-service').click(function(){
+    $('.main-service').click(function(){
         $(this).addClass('service-clicked');
     });
-    $('.all-services .ft-service').one("mouseenter", function(){
+    $('.main-service').one("mouseenter", function(){
         $(this).addClass('service-clicked');
     });
+});
+
+// Main Search Module Display
+$( document ).ready(function() {
+  $("#main-search-form").toggle();
+  $("a[title|='Main-Search']").on('click', function(){
+    $("#main-search-form").animate({width:'toggle'},1350);
+
+  });
 });

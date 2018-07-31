@@ -40,7 +40,7 @@ function COB_Services_Quick_Tips() {
         * is like Posts.
         */
         'hierarchical'        => true,
-        'query_var'           => ture,
+        'query_var'           => true,
         'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
@@ -50,7 +50,7 @@ function COB_Services_Quick_Tips() {
         'menu_position'       => 5,
         // 'can_export'          => true,
         'has_archive'         => false,
-        'exclude_from_search' => false,
+        'exclude_from_search' => true,
         'publicly_queryable'  => true,
         'capability_type'     => 'post'
     );
@@ -127,7 +127,7 @@ function COB_Services_All_Services() {
         * is like Posts.
         */
         'hierarchical'        => false,
-        'query_var'           => ture,
+        'query_var'           => true,
         'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
@@ -190,7 +190,7 @@ function COB_Services_Site_Updates() {
         * is like Posts.
         */
         'hierarchical'        => false,
-        'query_var'           => ture,
+        'query_var'           => true,
         'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
@@ -211,6 +211,68 @@ function COB_Services_Site_Updates() {
 }
 
 add_action( 'init', 'COB_Services_Site_Updates' ); // Create custom post type
+
+/*
+*
+* Custom Post Type: Forms Page
+* Displayed on:     Forms Page
+*
+ */
+
+function COB_Services_Form_Groups() {
+
+// Set UI labels for Custom Post Type
+    $labels = array(
+        'name'                =>  'Form Groups',
+        'singular_name'       =>  'Form Group',
+        'menu_name'           =>  'Form Groups',
+        'all_items'           =>  'All Form Groups',
+        'view_item'           =>  'View Group',
+        'add_new_item'        =>  'Add New Group',
+        'add_new'             =>  'Add New',
+        'edit_item'           =>  'Edit Group',
+        'update_item'         =>  'Update Group',
+        'search_items'        =>  'Search Groups',
+        'not_found'           =>  'No Group Found',
+        'not_found_in_trash'  =>  'No Group Found in Trash'
+    );
+
+// Set other options for Custom Post Type
+
+    $args = array(
+        'label'               =>  'all form groups',
+        'description'         =>  'These groups are visable on the forms page',
+        'labels'              =>  $labels,
+        // Features this CPT supports in Post Editor
+        'supports'            => array( 'title', 'editor', 'excerpt', 'revisions'),
+        // You can associate this CPT with a taxonomy or custom taxonomy.
+        //'taxonomies'          => false,
+        /* A hierarchical CPT is like Pages and can have
+        * Parent and child items. A non-hierarchical CPT
+        * is like Posts.
+        */
+        'hierarchical'        => false,
+        'query_var'           => true,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_icon'           => 'dashicons-portfolio',
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        // 'can_export'          => true,
+        'has_archive'         => false,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'post'
+    );
+
+    // Registering your Custom Post Type
+    register_post_type( 'cob_forms', $args );
+
+}
+
+add_action( 'init', 'COB_Services_Form_Groups' );
 
 /*
 *
@@ -252,7 +314,7 @@ function COB_Services_Site_Contacts() {
         * is like Posts.
         */
         'hierarchical'        => false,
-        'query_var'           => ture,
+        'query_var'           => true,
         'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
@@ -273,58 +335,3 @@ function COB_Services_Site_Contacts() {
 }
 
 add_action( 'init', 'COB_Services_Site_Contacts' ); // Create custom post type
-
-/*
- =========================== - - - - - - - =================
- Contact Custom Meta Field | cob_contacts | contact_location
- ========================== - - - - - - - ==================
-*/
-
-function COB_Services_Contacts_meta_box() {
-  add_meta_box('contact_location', 'Office Location', 'cob_contact_location_callback', 'cob_contacts', 'side' );
-}
-
-add_action( 'add_meta_boxes', 'COB_Services_Contacts_meta_box');
-
-// Callback Function
-function cob_contact_location_callback( $post ){
-  // Create nonce field
-  wp_nonce_field('cob_save_contact_location_data', 'cob_contact_location_meta_box_nonce');
-  $value = get_post_meta( $post->ID, '_cob_contact_location_value_key', true);
-
-  // Print Input Box
-  echo '<label for="cob_contact_location_field">Office Location of Contact</label>';
-  echo '<input type="text" id="cob_contact_location_field" name="cob_contact_location_field" value="' . esc_attr($value) . '" size="15" />';
-}
-
-// Save function
-function cob_save_contact_location_data( $post_id ){
-
-  // Check if nonce was set when 'save button' is clicked - security
-  if( ! isset( $_POST['cob_contact_location_meta_box_nonce'])){
-    return; // hard stop to prevent malicious data
-  }
-
-  // Check if nonce was generated by wordpress, not manually
-  if ( ! wp_verify_nonce( $_POST['cob_contact_location_meta_box_nonce'], 'cob_save_contact_location_data' )){
-    return;
-  }
-
-  // Verify user has correct permission to write data
-  if ( ! current_user_can('edit_post', $post_id)){
-    return;
-  }
-
-  // Verify data is actually in the box
-  if( ! isset( $_POST['cob_contact_location_field'])){
-    return;
-  }
-
-  // Sanatize the data before saving it
-  $custom_data = sanitize_text_field( $_POST['cob_contact_location_field'] );
-
-  update_post_meta( $post_id, '_cob_contact_location_value_key', $custom_data);
-
-}
-
-add_action( 'save_post', 'cob_save_contact_location_data');

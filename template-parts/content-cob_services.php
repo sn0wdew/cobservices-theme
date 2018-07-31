@@ -11,10 +11,11 @@
 
 <?php
 // Main Service Post ID. Important as we use multiple WP query loops
-$main_post_id = $post->ID; 
+$main_post_id = $post->ID;
 ?>
+<?php if(is_search()){echo '<div class="col">'; } ?>
 
-<div class="ft-service">
+<div class="ft-service main-service">
   <div class="ft-wrapper">
       <div class="table">
           <div class="table-cell">
@@ -68,3 +69,8 @@ $main_post_id = $post->ID;
     </div>
   </div><!-- .service-info -->
 </div><!-- .ft-service -->
+
+<?php
+if(is_search()){
+  echo '</div>';
+}

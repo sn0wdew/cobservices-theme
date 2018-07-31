@@ -9,6 +9,8 @@
 
 ?>
 
+<?php if(is_search()){echo '<div class="col">'; } ?>
+
 <div class="single-contact clearfix">
 
   <div class="contact-left">
@@ -22,3 +24,5 @@
   </div><!-- .contact-right -->
 
 </div><!-- .single-contact .clearfix -->
+
+<?php if(is_search()){echo '</div>'; } ?>

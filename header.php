@@ -91,6 +91,8 @@ if ( $query->have_posts() ) :?>
 	        <li><i class="fas fa-search fa-fw"></i> Search</li>
 	      </ul> -->
 	    </nav>
+			<div id="main-search-form"><?php get_search_form(); ?></div>
+
 	  </div>
 
 		<!-- Regular main-nav -->

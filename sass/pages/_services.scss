@@ -28,6 +28,7 @@
 
 .single-contact {
     padding: 14px 0;
+    max-width: 300px;
 }
 
 .single-contact + .single-contact {
@@ -43,8 +44,9 @@
 .contact-left img {
     max-height: 56px;
     border-radius: 50%;
-    margin-bottom: 5px;
     width: auto;
+    display: block;
+    margin: 0 auto 5px;
 }
 
 .contact-left p {

@@ -19,8 +19,8 @@ get_header();
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-8 text-center">
-                <h1><?php echo esc_attr(get_option('contact_main')['title']); ?></h1>
-                <h2><?php echo get_option('contact_main_subtitle'); ?></h2>
+                <h1><?php echo get_the_title();//echo esc_attr(get_option('contact_main')['title']); ?></h1>
+                <h2><?php echo get_the_content();//get_option('contact_main_subtitle'); ?></h2>
             </div>
         </div>
 

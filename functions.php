@@ -134,23 +134,23 @@ add_action( 'widgets_init', 'cob_services_widgets_init' );
 function cob_services_scripts() {
 	// Start Custom Stylesheets
 	wp_deregister_script('jquery');
-	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), '3.3.1', true);
+	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), '3.3.1', false);
 	wp_register_script( 'popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.9', true);
-	wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(jquery, popper), '4.0.0', true);
+	wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery', 'popper'), '4.0.0', true);
 	wp_register_script( 'fontawesome', get_template_directory_uri() . '/js/fontawesome-all.js', array(), null, false );
-	wp_register_script( 'slicknav', get_template_directory_uri() . '/js/jquery.slicknav.js', array(jquery), null, true);
-	wp_register_script( 'main', get_template_directory_uri() . '/js/main.js', array(jquery), null, true);
+	wp_register_script( 'slicknav', get_template_directory_uri() . '/js/jquery.slicknav.js', array('jquery'), null, true);
+	wp_register_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery'), null, true);
 
   wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css' );
 	wp_enqueue_style( 'main-css', get_template_directory_uri() . '/css/main.css' );
 	wp_enqueue_style( 'skicknav-style', get_template_directory_uri() . '/css/slicknav.css' );
   // End Custom Stylesheets
-
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'popper' );
 	wp_enqueue_style( 'cob-services-style', get_stylesheet_uri() );
 
   // Start Custom Javascript
-  wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'popper' );
+
   wp_enqueue_script( 'bootstrap');
   wp_enqueue_script( 'fontawesome');
   wp_enqueue_script( 'slicknav');
@@ -225,6 +225,10 @@ require get_template_directory() . '/taxonomy.php';
 
 // Get Admin Page Functions
 require get_template_directory() . '/inc/function-admin.php';
+
+// Get Custom Meta Boxes
+require get_template_directory() . '/inc/custom-meta-boxes.php';
+
 
 // Remove default post type
 add_action('admin_menu','remove_default_post_type');

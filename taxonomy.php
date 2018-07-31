@@ -99,7 +99,8 @@ function COB_Services_Site_Contacts_Taxonomy(){
      'show_ui' => true,
      'show_admin_column' => true,
      'query_var' => true,
-     'rewrite' => array('slug' => 'service_departments')
+     'rewrite' => array('slug' => 'service_departments'),
+     'public' => true
    );
 
  register_taxonomy( 'Service Departments', array('cob_contacts', 'cob_services'), $args );
