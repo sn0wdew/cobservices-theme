@@ -44,8 +44,5 @@ get_header();
 
         </div><!-- .container .ft-service-container -->
       </div><!-- .all-contacts -->
-
-
-
 <?php
 get_footer();
