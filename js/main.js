@@ -9,6 +9,7 @@ $( document ).ready(function() {
       $(".slicknav_icon-bar:eq(0)").toggleClass("nav-swing-1");
       $(".slicknav_icon-bar:eq(1)").toggleClass("nav-swing-2");
       $(".slicknav_icon-bar:eq(2)").toggleClass("nav-swing-3");
+      $("body").toggleClass("position-fixed")
   });
 });
 

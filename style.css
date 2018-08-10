@@ -1321,6 +1321,29 @@ nav ul li {
     max-width: 226px;
     margin: 0 auto; }
 
+/* ============ FAQ Form ============ */
+#faq-search-form {
+  display: inline-block;
+  margin: 2.8rem 0; }
+
+#faq-search-form .search-field {
+  max-width: 300px; }
+
+.faq-search-container {
+  color: white;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 2.8rem; }
+
+.faq-search-container [type="submit"] {
+  background-color: transparent;
+  border-color: white;
+  margin-left: 10px; }
+
+.faq-search-container [type="submit"]:hover {
+  background-color: white;
+  color: black; }
+
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
