@@ -120,6 +120,19 @@ function cob_services_custom_contact_settings(){
   register_setting( $current_group, 'contact_banner_enable');
   register_setting( $current_group, 'contact_banner');
 
+  // --------- Contact Form Options ---------//
+  $current_section = 'cob-services-contact-form-options'; // Section for Variables
+    // Section
+  add_settings_section( $current_section, 'Contact Form Options', 'cob_services_contact_form_options', $current_page );
+    // Fields
+  add_settings_field( 'contact-form-button-enable', 'Enable Form', 'cob_services_contanct_form_enable_callback', $current_page, $current_section );
+  add_settings_field( 'contact-form-title', 'Form Title', 'cob_services_contanct_form_title_callback', $current_page, $current_section );
+  add_settings_field( 'contact-form-text', 'Form Subtitle', 'cob_services_contanct_form_subtitle_callback', $current_page, $current_section );
+  add_settings_field( 'contact-form-shortcode', 'Shortcode', 'cob_services_contact_form_code_callback', $current_page, $current_section );
+    // Register Settings for 'home-feature'
+  register_setting( $current_group, 'contact_form_enable');
+  register_setting( $current_group, 'contact_form');
+
 }
 
 
@@ -137,6 +150,7 @@ function cob_services_home_banner_options(){
   echo "<p>These options are for the Banner module on the home page.</p>";
 }
 
+// Home Contact Form Section
 function cob_services_home_form_options_callback(){
   echo "<p>These options are for the form module on the home page.</p>";
 }
@@ -148,7 +162,12 @@ function cob_services_contact_main_options(){
 
 // Contact Banner Section
 function cob_services_contact_banner_options(){
+  echo "<p>This banner appears below the contact cards on the contact page.</p>";
+}
 
+// Contact Form Section
+function cob_services_contact_form_options(){
+  echo "<p>This section appears below the banner on the contact page.</p>";
 }
 
 /****************************************************
@@ -315,6 +334,36 @@ function cob_services_contanct_button_text_callback(){
 function cob_services_contanct_button_link_callback(){
   $options = get_option('contact_banner'); // Get value
   echo '<input type="text" name="contact_banner[button_link]" value="' . esc_attr($options['button_link']) . '" placeholder="Button Link" />';
+}
+
+// Contact Form Options - Enable
+function cob_services_contanct_form_enable_callback(){
+  $options = esc_attr(get_option('contact_form_enable'));
+  echo '<input id ="contact_form_enable" type="checkbox" name="contact_form_enable" value="1"';
+  if ( $options == 1 ) {
+    echo ' checked';
+  }
+  echo ' />';
+  echo '<label for="contact_form_enable">Display this form? (default is checked)</label>';
+}
+
+// Contact Form Options - Title
+function cob_services_contanct_form_title_callback(){
+  $options = get_option('contact_form'); // Get value
+  echo '<input type="text" name="contact_form[title]" value="' . esc_attr($options['title']) . '" placeholder="Section Title" />';
+}
+
+// Contact Form Options - Subtitle
+function cob_services_contanct_form_subtitle_callback(){
+  $options = get_option('contact_form'); // Get value
+  echo '<textarea name="contact_form[subtitle]" placeholder="Section Subtitle">' . esc_attr($options['subtitle']) . '</textarea>';
+}
+
+// Contact Form Options - Shortcode
+function cob_services_contact_form_code_callback(){
+  $options = get_option('contact_form'); // Get value
+  echo '<input type="text" name="contact_form[code]" value="' . esc_attr($options['code']) . '" placeholder="[shortcode]" />';
+  echo '<label for="contact_form[code]">To find the shortcode, open any page, insert a form using the tool, and copy the [code] including brackets</label>';
 }
 
 /****************************************************
