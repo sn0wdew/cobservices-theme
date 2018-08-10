@@ -1,5 +1,8 @@
 <h1>Home Page Settings</h1>
-<p>Description here</p>
+<div>
+  <p>Use the shortcode <code>[cobservices_home]</code> to display the home page.</p>
+  <br>
+</div>
 
 <?php settings_errors(); ?>
 <form action="options.php" method="post">

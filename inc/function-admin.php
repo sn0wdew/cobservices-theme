@@ -64,6 +64,7 @@ function cob_services_custom_home_settings(){
   add_settings_field( 'home-tips-bk', 'Background Image', 'cob_services_home_bk_callback', $current_page, $current_section ); // Field - Subline
     // Register Settings for 'home-feature'
   register_setting( $current_group, 'home_tips');
+  register_setting( $current_group, 'home_tips_activate');
 
   // --------- Banner Options ---------//
   $current_section = 'cob-services-home-banner-options'; // Section for Variables
@@ -156,13 +157,13 @@ function cob_services_contact_banner_options(){
 
 // Home Quick Tips - Enable
 function cob_services_home_enable_callback(){
-  $options = get_option('home_tips');
-  echo '<input id="home_tips[enable]" type="checkbox" name="home_tips[enable]" value="1"';
-  if ( $options['enable'] == 1 ) {
-    echo ' checked';
+  $options = get_option('home_tips_activate');
+  echo '<input id="home_tips_activate" type="checkbox" name="home_tips_activate" value="1" ';
+  if ( $options == 1 ) {
+    echo 'checked';
   }
   echo ' />';
-  echo '<label for="home_tips[enable]">Display Home Tips? (default is checked)</label>';
+  echo '<label for="home_tips_activate">Display Home Tips? (default is checked)</label>';
 }
 
 // Home Quick Tips - Headline

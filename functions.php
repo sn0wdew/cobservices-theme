@@ -229,6 +229,8 @@ require get_template_directory() . '/inc/function-admin.php';
 // Get Custom Meta Boxes
 require get_template_directory() . '/inc/custom-meta-boxes.php';
 
+// Get Custom Short Codes
+require get_template_directory() . '/inc/custom-shortcodes.php';
 
 // Remove default post type
 add_action('admin_menu','remove_default_post_type');

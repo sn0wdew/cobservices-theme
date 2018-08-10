@@ -60,7 +60,7 @@ function COB_Services_Quick_Tips() {
 
 }
 // Check if home tips was enabled before registering post type
-if (esc_attr(get_option('home_tips')['enable']) == 1){
+if (esc_attr(get_option('home_tips_activate')) == 1){
   add_action( 'init', 'COB_Services_Quick_Tips' );
 }
 
