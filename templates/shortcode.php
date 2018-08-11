@@ -1,6 +1,6 @@
 <?php
 /**
- * The home page
+ * Template Name: Shortcode Only Page
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

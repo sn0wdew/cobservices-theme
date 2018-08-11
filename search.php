@@ -19,12 +19,13 @@ get_header();
 
 			<header class="row">
 				<div class="col">
-					<h1>
+					<h1>Search Results</h1>
+					<h2 class="mb-5">
 						<?php
 						/* translators: %s: search query. */
-						printf( esc_html__( 'Search Results for: %s', 'cob-services' ), '<span>' . get_search_query() . '</span>' );
+						printf( esc_html__( 'You searched for: %s', 'cob-services' ), '<span class="badge badge-secondary">' . get_search_query() . '</span>' );
 						?>
-					</h1>
+					</h2>
 				</div>
 			</header><!-- .page-header -->
 
@@ -42,10 +43,9 @@ get_header();
 				get_template_part( 'template-parts/content', get_post_type() );
 
 				echo '</div>';
+				wp_reset_postdata();
 
 			endwhile;
-
-			the_posts_navigation();
 
 		else :
 

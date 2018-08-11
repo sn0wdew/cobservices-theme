@@ -9,43 +9,23 @@
 
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'cob-services' ); ?></h1>
-	</header><!-- .page-header -->
+<header class="row">
+	<div class="col">
+		<h1>Search Results</h1>
+		<h2 class="">
+			<?php
+			/* translators: %s: search query. */
+			printf( esc_html__( 'You searched for: %s', 'cob-services' ), '<span class="badge badge-secondary">' . get_search_query() . '</span>' );
+			?>
+		</h2>
+	</div>
+</header><!-- .page-header -->
 
+
+<section class="col">
 	<div class="page-content">
-		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-
-			printf(
-				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'cob-services' ),
-					array(
-						'a' => array(
-							'href' => array(),
-						),
-					)
-				) . '</p>',
-				esc_url( admin_url( 'post-new.php' ) )
-			);
-
-		elseif ( is_search() ) :
-			?>
-
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'cob-services' ); ?></p>
-			<?php
-			get_search_form();
-
-		else :
-			?>
-
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'cob-services' ); ?></p>
-			<?php
-			get_search_form();
-
-		endif;
-		?>
+		<div class="alert alert-info" role="alert">
+			<?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'cob-services' ); ?>
+		</div>
 	</div><!-- .page-content -->
 </section><!-- .no-results -->

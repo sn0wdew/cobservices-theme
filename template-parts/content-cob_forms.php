@@ -9,6 +9,23 @@
 
 ?>
 
+<?php if(is_search()): ?>
+  <div style="margin-left:15px; margin-bottom: 28px;" class="ft-service service-clicked">
+    <div class="ft-wrapper">
+        <div class="table">
+            <div class="table-cell">
+                <h2><?php echo get_the_title(); ?></h2>
+            </div>
+        </div>
+    </div><!-- .ft-wrapper -->
+    <div class="service-info">
+      <div class="service-links">
+        <?php echo get_post_field('post_content'); ?>
+      </div>
+    </div><!-- .service-info -->
+  </div><!-- .ft-service -->
+
+<?php else: ?>
 <div class="ft-service service-clicked">
   <div class="ft-wrapper">
       <div class="table">
@@ -28,3 +45,4 @@
     </div>
   </div><!-- .service-info -->
 </div><!-- .ft-service -->
+<?php endif;

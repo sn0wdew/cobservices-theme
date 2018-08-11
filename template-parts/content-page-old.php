@@ -53,29 +53,15 @@
 	<?php endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
 
-<?php else:
-
-  // Check if page has the 'Single Form Page' template
-	if( get_page_template_slug() == "templates/singleform.php" ) :
-	?>
-
-	<article class="col-sm-12 col-md-6">
-		<header>
-			<?php the_title( sprintf( '<h2><a href="%s">', esc_url( get_permalink() ) ), ' <i class="fa fas fa-file"></i></a></h2>' ); ?>
-		</header><!-- .entry-header -->
-	</article><!-- #post-<?php the_ID(); ?> -->
-
-<?php else: //if template file doesn't match ?>
-	<article class="col-sm-12 col-md-6">
-		<header>
-			<?php the_title( sprintf( '<h2><a href="%s">', esc_url( get_permalink() ) ), ' <i class="fa fas fa-link"></i></a></h2>' ); ?>
+<?php else: ?>
+	<article id="post-<?php the_ID(); ?>" class="col">
+		<header class="entry-header">
+			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 		</header><!-- .entry-header -->
 
 		<div class="entry-summary">
-			<?php the_excerpt();?>
+			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
 	</article><!-- #post-<?php the_ID(); ?> -->
-<?php endif; ?>
-
 
 <?php endif; ?>
