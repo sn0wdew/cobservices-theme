@@ -1,3 +1,30 @@
+/*
+ * WooCommerce Checkout
+ *
+ */
+.attachment-woocommerce_thumbnail {
+	height: 100px;
+	width: auto;
+	display: block;
+	margin:0 auto;
+}
+.cart_totals {
+	padding: 1rem 2rem;
+	box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
+}
+
+.product-remove {
+	font-size: 28px;
+	color: black !important;
+
+	a {
+		color: $color__gray;
+		&:hover {
+			color: lighten($color__gray, 20%);
+		}
+	}
+}
+
 /**
  * WooCommerce Price Filter
  */

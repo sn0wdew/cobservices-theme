@@ -28,11 +28,18 @@ nav ul li {
 
 .left-nav {
   float: left;
+  line-height: 50px;
 }
 
 .right-nav {
   float: right;
   display: inline-block;
+  line-height: 50px;
+}
+
+.right-nav ul {
+  margin-right: 1rem;
+  margin-right: 10px;
 }
 
 /* ============ Main Navigation Styles ============ */
@@ -119,9 +126,8 @@ nav ul li {
 }
 
 #main-search-form {
-  clear:both;
   float: right;
-  height: 28.6px;
+  height: 30px;
   overflow:hidden;
   margin: 10px 0px;
 }

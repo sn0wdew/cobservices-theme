@@ -35,11 +35,13 @@
       </div>
   </div><!-- .ft-wrapper -->
   <div class="service-info">
+    <?php if(has_excerpt()): ?>
     <div style="padding: 20px 28px 10px; padding: 2rem 2.8rem 1rem;">
       <div class="text-left clearfix">
         <p><?php echo get_the_excerpt(); ?></p>
       </div><!-- .text-left .clearfix -->
     </div><!-- div -->
+  <?php endif; ?>
     <div class="service-links">
       <?php echo get_post_field('post_content'); ?>
     </div>

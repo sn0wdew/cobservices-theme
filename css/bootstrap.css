@@ -1613,7 +1613,7 @@ pre code {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -2487,16 +2487,23 @@ fieldset[disabled] a.btn {
 }
 
 .btn-outline-success {
-  color: #28a745;
+  color: #00694E !important;
   background-color: transparent;
   background-image: none;
-  border-color: #28a745;
+  border-color: #00694E;
+}
+
+.btn-outline-success a {
+  color: #00694E !important;
 }
 
 .btn-outline-success:hover {
-  color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
+  color: #fff !important;
+  background-color: #00694E;
+  border-color: #00694E;
+}
+.btn-outline-success:hover a {
+  color: #fff !important;
 }
 
 .btn-outline-success:focus, .btn-outline-success.focus {
@@ -4554,7 +4561,6 @@ tbody.collapse.show {
 }
 
 .alert-link {
-  font-weight: 700;
 }
 
 .alert-dismissible {
@@ -4607,8 +4613,9 @@ tbody.collapse.show {
   border-top-color: #b1dfbb;
 }
 
-.alert-success .alert-link {
-  color: #0b2e13;
+.alert-success .alert-link, .alert-success a {
+  color: #0b2e13 !important;
+  text-decoration: underline;
 }
 
 .alert-info {

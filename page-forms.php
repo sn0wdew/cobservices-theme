@@ -13,9 +13,8 @@ get_header();
 <div class="all-contacts forms-pg">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-8 text-center">
+            <div class="col-12 text-center">
                 <h1><?php echo get_the_title(); ?></h1>
-                <h2><?php //echo get_the_content(); ?></h2>
             </div>
         </div>
 

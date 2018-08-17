@@ -1,6 +1,32 @@
+.shop-sidebar {
+	padding: 1rem 2rem;
+	box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
+}
+
 /**
  * Products
  */
+.woocommerce-ordering {
+	margin-bottom: 28px;
+	margin-bottom: 2.8rem;
+}
+
+ .add-to-cart-btn {
+	 font-size: 18px;
+	 color: white!important;
+ }
+
+.onsale {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	color: white !important;
+	font-size: 16px;
+	padding: 5px 10px;
+	background-color: #343a40;
+}
+
 ul.products {
 	@include clearfix;
 	margin: 0;
@@ -12,11 +38,14 @@ ul.products {
 		margin-bottom: 2em;
 
 		.woocommerce-loop-product__title {
-			font-size: 1rem;
+			color: black;
+			text-align: center;
 		}
 
 		img {
 			display: block;
+			width: 100%;
+			height: auto;
 		}
 
 		.button {

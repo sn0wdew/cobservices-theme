@@ -77,6 +77,7 @@ if ( $query->have_posts() ) :?>
 				?>
 	    </nav>
 	    <nav class="right-nav">
+				<div id="main-search-form"><?php get_search_form(); ?></div>
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'top-right',
@@ -85,14 +86,7 @@ if ( $query->have_posts() ) :?>
 					'walker' => new Walker_Nav_Icons()
 				) );
 				?>
-				<!--
-	      <ul>
-	        <li><i class="fas fa-shopping-cart fa-fw"></i> Cart</li>
-	        <li><i class="fas fa-search fa-fw"></i> Search</li>
-	      </ul> -->
 	    </nav>
-			<div id="main-search-form"><?php get_search_form(); ?></div>
-
 	  </div>
 
 		<!-- Regular main-nav -->

@@ -738,11 +738,17 @@ nav ul li {
   margin-left: 10px; }
 
 .left-nav {
-  float: left; }
+  float: left;
+  line-height: 50px; }
 
 .right-nav {
   float: right;
-  display: inline-block; }
+  display: inline-block;
+  line-height: 50px; }
+
+.right-nav ul {
+  margin-right: 1rem;
+  margin-right: 10px; }
 
 /* ============ Main Navigation Styles ============ */
 .main-nav {
@@ -816,9 +822,8 @@ nav ul li {
     height: 4.8rem; } }
 
 #main-search-form {
-  clear: both;
   float: right;
-  height: 28.6px;
+  height: 30px;
   overflow: hidden;
   margin: 10px 0px; }
 
@@ -1088,7 +1093,8 @@ nav ul li {
   border: 2px solid white; }
 
 .ft-service img {
-  max-height: 50px;
+  height: 50px;
+  width: auto;
   display: block;
   margin: 0px auto; }
 

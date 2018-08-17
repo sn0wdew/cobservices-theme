@@ -96,7 +96,7 @@ add_filter( 'woocommerce_product_thumbnails_columns', 'cob_services_woocommerce_
  * @return integer products per row.
  */
 function cob_services_woocommerce_loop_columns() {
-	return 3;
+	return 4;
 }
 add_filter( 'loop_shop_columns', 'cob_services_woocommerce_loop_columns' );
 
@@ -159,8 +159,8 @@ if ( ! function_exists( 'cob_services_woocommerce_wrapper_before' ) ) {
 	 */
 	function cob_services_woocommerce_wrapper_before() {
 		?>
-		<div id="primary" class="content-area">
-			<main id="main" class="site-main" role="main">
+		<div class="container">
+			<main id="main" class="col-12 col-lg-10" role="main">
 			<?php
 	}
 }

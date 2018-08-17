@@ -9,7 +9,7 @@ $( document ).ready(function() {
       $(".slicknav_icon-bar:eq(0)").toggleClass("nav-swing-1");
       $(".slicknav_icon-bar:eq(1)").toggleClass("nav-swing-2");
       $(".slicknav_icon-bar:eq(2)").toggleClass("nav-swing-3");
-      $("body").toggleClass("position-fixed")
+      $("body").toggleClass("position-fixed w-100")
   });
 });
 
@@ -24,10 +24,3 @@ $( document ).ready(function() {
 });
 
 // Main Search Module Display
-$( document ).ready(function() {
-  $("#main-search-form").toggle();
-  $("a[title|='Main-Search']").on('click', function(){
-    $("#main-search-form").animate({width:'toggle'},1350);
-
-  });
-});

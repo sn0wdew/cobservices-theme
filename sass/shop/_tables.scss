@@ -1,3 +1,12 @@
+.cart_item {
+	border-left: none;
+	border-right: none;
+	border-bottom: solid 1px $color__gray;
+}
+.cart_item + .cart_item {
+	border-top: solid 1px $color__gray;
+}
+
 /**
  * Shop tables
  */

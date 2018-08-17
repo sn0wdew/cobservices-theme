@@ -1,21 +1,25 @@
 /**
  * Checkout
  */
-@media screen and (min-width: 768px) {
-	.col2-set {
-		.form-row-first {
-			float: left;
-			margin-right: $columns__margin;
-		}
-
-		.form-row-last {
-			float: right;
-			margin-right: 0;
-		}
-
-		.form-row-first,
-		.form-row-last {
-			@include column-width(2);
-		}
-	}
+span.woocommerce-input-wrapper{
+	width: 100%;
 }
+
+.woocommerce-additional-fields__field-wrapper .input-text {
+	width: 100%;
+}
+
+.woocommerce-checkout .input-text {
+	display: block;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-size: 1.3rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	-webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+	transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ }

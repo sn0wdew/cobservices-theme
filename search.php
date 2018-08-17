@@ -33,7 +33,7 @@ get_header();
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-				echo '<div class="row border-bottom">';
+				echo '<div class="row mb-4">';
 
 				/**
 				 * Run the loop for the search to output the results.

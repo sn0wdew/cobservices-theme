@@ -53,6 +53,9 @@ get_header();
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+	<div>
+		<p>This is the default index template.</p>
+	</div>
 
 <?php
 get_sidebar();
