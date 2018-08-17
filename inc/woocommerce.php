@@ -268,3 +268,49 @@ if ( ! function_exists( 'cob_services_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+/**
+ * Woocommerce checkout fields fix.
+ *
+ */
+
+ // Hook in
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Our hooked in function - $fields is passed via the filter!
+function custom_override_checkout_fields( $fields ) {
+		 unset($fields['billing']['billing_address_1']);
+		 unset($fields['billing']['billing_address_2']);
+		 unset($fields['billing']['billing_city']);
+		 unset($fields['billing']['billing_postcode']);
+		 unset($fields['billing']['billing_country']);
+		 unset($fields['billing']['billing_state']);
+		 unset($fields['billing']['billing_company']);
+		 unset($fields['shipping']['shipping_company']);
+		 unset($fields['shipping']['shipping_address_1']);
+		 unset($fields['shipping']['shipping_address_2']);
+		 unset($fields['shipping']['shipping_city']);
+		 unset($fields['shipping']['shipping_postcode']);
+		 unset($fields['shipping']['shipping_country']);
+		 unset($fields['shipping']['shipping_state']);
+		 $fields['billing']['p_card'] = array(
+ 			 'label'     => __('P-Card', 'woocommerce'),
+		 	 'placeholder'   => _x('xxx', 'placeholder', 'woocommerce'),
+		 	 'required'  => true,
+		 	 'class'     => array(''),
+		 	 'clear'     => true
+		 		);
+
+     return $fields;
+}
+
+
+/**
+* Display field value on the order edit page
+*/
+
+add_action( 'woocommerce_admin_order_data_after_shipping_address', 'cob_p_card_display_admin_order_meta', 10, 1 );
+
+function my_custom_checkout_field_display_admin_order_meta($order){
+	 echo '<p><strong>'.__('P-Card Number').':</strong> ' . get_post_meta( $order->get_id(), '_shipping_phone', true ) . '</p>';
+}

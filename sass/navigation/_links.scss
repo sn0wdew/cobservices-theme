@@ -3,6 +3,7 @@ a {
 	text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+	position: relative;
 
 	&:visited {
 		color: $color__link-visited;
@@ -33,4 +34,29 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 
 a:not([href]):not([tabindex]):focus {
   outline: 0;
+}
+
+.ft-service a::after {
+  content: "";
+  height: 2px;
+  width: 0px;
+  background-color: $color__primary;
+  position: absolute;
+  left: 0;
+  -webkit-transition: width .2s;
+  transition: width .2s;
+	bottom: -2px;
+}
+
+.ft-service a:hover::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: $color__primary;
+  position: absolute;
+  left: 0;
+	bottom: -2px;
+	right: 0;
+  -webkit-transition: width .2s;
+  transition: width .2s;
 }

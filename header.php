@@ -65,7 +65,7 @@ if ( $query->have_posts() ) :?>
 
 	<!-- Start Custom Header -->
   <header>
-		<div class="container top-nav">
+		<div class="container top-nav hidden-print">
 	    <nav class="left-nav">
 				<?php
 				wp_nav_menu( array(
@@ -98,7 +98,7 @@ if ( $query->have_posts() ) :?>
 				<?php
 				the_custom_logo();
 				?>
-	      <nav>
+	      <nav class="hidden-print">
 					<?php
 					wp_nav_menu( array(
 						'theme_location' => 'main-navigation',
