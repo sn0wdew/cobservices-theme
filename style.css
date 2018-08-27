@@ -693,8 +693,7 @@ a {
   color: #05B4C6;
   text-decoration: none;
   background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-  position: relative; }
+  -webkit-text-decoration-skip: objects; }
   a:visited {
     color: #05B4C6; }
   a:hover, a:focus, a:active {
@@ -712,6 +711,9 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 
 a:not([href]):not([tabindex]):focus {
   outline: 0; }
+
+.ft-service a {
+  position: relative; }
 
 .ft-service a::after {
   content: "";
@@ -1218,6 +1220,10 @@ nav ul li {
 .home-updates .card-text {
   margin-top: 10px;
   margin-top: 1rem; }
+
+@media (max-width: 576px) {
+  .search-field {
+    width: 125px; } }
 
 /* ============ Services ============ */
 .all-service-wrapper {

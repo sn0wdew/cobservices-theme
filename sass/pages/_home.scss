@@ -275,3 +275,9 @@
     margin-top: 10px;
     margin-top: 1rem;
 }
+
+@media (max-width: 576px) {
+  .search-field {
+    width: 125px;
+  }
+}

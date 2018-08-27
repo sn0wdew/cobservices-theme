@@ -16,7 +16,17 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/favicons/apple-touch-icon.png?v=001">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/favicons/favicon-32x32.png?v=001">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/favicons/favicon-16x16.png?v=001">
+	<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/favicons/site.webmanifest?v=001">
+	<link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/favicons/safari-pinned-tab.svg?v=001" color="#00694e">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicons/favicon.ico?v=001">
+	<meta name="apple-mobile-web-app-title" content="CoB Services">
+	<meta name="application-name" content="Business Services">
+	<meta name="msapplication-TileColor" content="#ff0000">
+	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/favicons/mstile-144x144.png?v=001">
+	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
 </head>
 
