@@ -134,9 +134,11 @@ add_action( 'widgets_init', 'cob_services_widgets_init' );
 function cob_services_scripts() {
 	// Start Custom Stylesheets
 	wp_deregister_script('jquery');
-	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), '3.3.1', false);
-	wp_register_script( 'popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.9', true);
-	wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery', 'popper'), '4.0.0', true);
+	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), null, false);
+	wp_register_script( 'popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), null, true);
+	//wp_register_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('jquery', 'popper'), '4.0.0', true);
+	wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery', 'popper'), null, true);
+	//wp_register_script( 'fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/js/all.js', array(), null, true);
 	wp_register_script( 'fontawesome', get_template_directory_uri() . '/js/fontawesome-all.js', array(), null, false );
 	wp_register_script( 'slicknav', get_template_directory_uri() . '/js/jquery.slicknav.js', array('jquery'), null, true);
 	wp_register_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery'), null, true);
@@ -157,9 +159,8 @@ function cob_services_scripts() {
   wp_enqueue_script( 'main');
   // End Custom Javascript
 
-	wp_enqueue_script( 'cob-services-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'cob-services-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'cob-services-navigation', get_template_directory_uri() . '/js/navigation.js', array(), null, true );
+	wp_enqueue_script( 'cob-services-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), null, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

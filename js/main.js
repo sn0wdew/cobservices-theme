@@ -1,5 +1,5 @@
 // Mobile Navigation Function
-$( document ).ready(function() {
+jQuery(document).ready(function($){
   $('#menu').slicknav({
     label: '',
     appendTo: '.main-nav .container'
@@ -14,7 +14,7 @@ $( document ).ready(function() {
 });
 
 // All Services Transition
-$( document ).ready(function() {
+jQuery(document).ready(function($){
     $('.main-service').click(function(){
         $(this).addClass('service-clicked');
     });
