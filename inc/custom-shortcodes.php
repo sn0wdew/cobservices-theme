@@ -26,7 +26,7 @@ function cobservices_home_shortcode(){
   if ( $query->have_posts() && esc_attr(get_option('home_tips_activate')) == 1 ) :
 
   ?>
-  <div class="home-quick-tips" style="background-image: url('<?php echo esc_attr(get_option('home_tips')['bk'], ''); ?> ')">
+  <div class="home-quick-tips" style="background-image: url('<?php echo str_replace('http:','', esc_attr(get_option('home_tips')['bk']));?> ')">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-8 text-center">
