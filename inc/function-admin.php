@@ -7,7 +7,7 @@
 
 // Register admin scripts
 function cob_admin_enque_scripts(){
-  wp_register_script( 'cob-admin-script', get_template_directory_uri() . '/js/cob-admin.js', array('jquery'), '1.0.0', true);
+  wp_register_script( 'cob-admin-script', get_template_directory_uri() . '/js/cob-admin.js', array('jquery'), NULL, true);
   wp_enqueue_script('cob-admin-script' );
   wp_enqueue_media();
 }
